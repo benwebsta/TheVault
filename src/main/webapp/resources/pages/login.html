@@ -1,0 +1,31 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css">
+</head>
+<body ng-controller="LoginController">
+  
+	<div class="container" id="login">
+		<section id="content">
+			<form>
+				<h1>Login</h1>
+				<div>
+					<input type="text" placeholder="Username" required="" id="username" ng-model="username"/>
+				</div>
+				<div>
+					<input type="password" placeholder="Password" required="" id="password" ng-model="password"/>
+				</div>
+				<div>
+					<input type="submit" value="Log in" ng-click="login()"/>
+					<a ui-sref="forgotPassword">Lost your password?</a>
+					<a ui-sref="registration">Register</a>
+				</div>
+			</form><!-- form -->
+			
+		</section><!-- content -->
+	</div><!-- container -->
+	<div class="alert alert-danger" ng-show="loginInfoIncorrect == true">
+	  <strong>Username or Password Incorrect</strong>
+	</div>
+
+</body>
+</html>

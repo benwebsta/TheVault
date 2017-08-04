@@ -1,0 +1,58 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css">
+</head>
+<body>
+  
+	<div class="container" id="registration" ng-controller="RegistrationController">
+		<section id="content">
+			<form name="userForm">
+				<h1>Registration</h1>
+				<div ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid }">
+					<input type="text" name="first"	placeholder="First Name" required id="firstName" ng-model="firstName"/>
+					<div ng-messages="userForm.first.$error" ng-if="userForm.first.$touched">
+				        <p ng-message="required">Your first name is required.</p>
+			      	</div>
+				</div>
+				<div ng-class="{ 'has-error': userForm.last.$touched && userForm.last.$invalid }">
+					<input type="text" name="last" placeholder="Last Name" required id="lastName" ng-model="lastName"/>
+					<div ng-messages="userForm.last.$error" ng-if="userForm.last.$touched">
+				        <p ng-message="required">Your last name is required.</p>
+			      	</div>
+				</div>
+				<div ng-class="{ 'has-error': userForm.user.$touched && userForm.user.$invalid }">
+					<input type="text" name="user" placeholder="Username" required="" id="username" ng-model="username"/>
+					<div ng-messages="userForm.user.$error" ng-if="userForm.user.$touched">
+				        <p ng-message="required">Your username is required.</p>
+			      	</div>
+				</div>
+				<div ng-class="{ 'has-error': userForm.pass.$touched && userForm.pass.$invalid }">
+					<input type="password" name="pass" ng-minlength="5" ng-maxlength="20" 
+					placeholder="Password" required id="password" ng-model="password"/>
+					<div ng-messages="userForm.pass.$error" ng-if="userForm.pass.$touched">
+				        <p ng-message="minlength">Your password is too short.</p>
+				        <p ng-message="maxlength">Your password is too long.</p>
+				        <p ng-message="required">Your password is required.</p>
+			      	</div>
+				</div>
+				<div id="registerButton">
+					<input type="submit" value="Register" ng-click="userForm.$valid && register()"/>
+				</div>
+			</form><!-- form -->
+		</section><!-- content -->
+		<div id="showPassword">
+			<button type="button" class="btn btn-primary btn-lg" ui-sref="login">Login Page</button><br><br>
+		</div>
+		<div class="alert alert-success" ng-show="response == true">
+		  <strong>Registration Successful!</strong>
+		</div>
+		<div class="alert alert-danger" ng-show="response == false && usernameTaken == false">
+		  <strong>Registration Failed</strong>
+		</div>
+		<div class="alert alert-danger" ng-show="usernameTaken == true">
+		  <strong>Username Taken</strong>
+		</div>
+	</div><!-- container -->
+
+</body>
+</html>

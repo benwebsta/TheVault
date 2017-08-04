@@ -1,0 +1,18 @@
+<html>
+<head>
+	<%@ include file="navbar.jsp" %>
+</head>
+<body ng-controller="UserController">
+<h2>{{user.userId}}</h2>
+<h2>{{user.firstName}}</h2>
+<h2>{{user.lastName}}</h2>
+<h2>{{user.email}}</h2>
+<h2>{{user.password}}</h2>
+
+<button ng-click="postUser()">test</button>
+<button ng-click="getAllUsers()">get all users</button>
+
+<h3>{{success}}</h3><br>
+{{result}}
+</body>
+</html>

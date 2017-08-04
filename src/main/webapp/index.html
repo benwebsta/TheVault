@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<script
+	  src="http://code.jquery.com/jquery-3.1.1.js"
+	  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+	  crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- Angular JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-cookies.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-messages.min.js"></script>
+	
+	<!-- Scripts -->
+	<script src="resources/js/app.js"></script>
+	<script src="resources/js/LoginController.js"></script>
+	<script src="resources/js/UserController.js"></script>
+	<script src="resources/js/NavbarController.js"></script>
+	<script src="resources/js/RegistrationController.js"></script>
+	<script src="resources/js/IncomeController.js"></script>
+	<script src="resources/js/AutomobileController.js"></script>
+	<script src="resources/js/RentAndUtilitiesController.js"></script>
+	<script src="resources/js/FoodController.js"></script>
+	<script src="resources/js/HealthAndFitnessController.js"></script>
+	<script src="resources/js/EntertainmentController.js"></script>
+	<script src="resources/js/MiscellaneousController.js"></script>
+	<script src="resources/js/SummaryController.js"></script>
+	<script src="resources/js/ForgotPasswordController.js"></script>
+	
+	<!-- CSS for our pages -->
+	<link rel="stylesheet" type="text/css" href="resources/css/home.css">
+	
+	
+	<title>TheVault</title>
+</head>
+<body ng-app="thevault" ng-controller="NavbarController">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a ng-cloak class="navbar-brand" ng-if="user || username" ui-sref="summary">TheVault</a>
+	      <a ng-cloak class="navbar-brand" ng-if="!user && !username" ui-sref="login">TheVault</a>
+	    </div>
+	
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav" ng-if="user" ng-cloak>
+	        <li ui-sref-active="active" ng-controller="IncomeController"><a ui-sref="income" ng-click="getAllIncomes()">Income<span class="sr-only">(current)</span></a></li>
+	        <li ui-sref-active="active"><a ui-sref="automobile">Automobile</a></li>
+	        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
+	        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
+	        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
+	        <li ui-sref-active="active"><a ui-sref="entertainment">Entertainment</a></li>
+	        <li ui-sref-active="active"><a ui-sref="miscellaneous">Miscellaneous</a></li>
+	        <li ui-sref-active="active"><a>{{username}}</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right" ng-if="user" ng-cloak>
+	        <li ><a ui-sref="summary">Summary</a></li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a ng-click="incomeEntry()">Income<span class="sr-only">(current)</span></a></li>
+		        <li ui-sref-active="active"><a ui-sref="automobile">Automobile</a></li>
+		        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
+		        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
+		        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
+		        <li ui-sref-active="active"><a ui-sref="entertainment">Entertainment</a></li>
+		        <li ui-sref-active="active"><a ui-sref="miscellaneous">Miscellaneous</a></li>
+	          </ul>
+	        </li>
+	        <li>
+	        	<button type="button" class="btn btn-primary btn-lg" ng-click="logout()">Logout</button>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	
+	<div ui-view="login"></div>
+	<div ui-view="registration"></div>
+	<div ui-view="forgotPassword"></div>
+	<div ui-view="income"></div>
+	<div ui-view="automobile"></div>
+	<div ui-view="rentAndUtilities"></div>
+	<div ui-view="food"></div>
+	<div ui-view="healthAndFitness"></div>
+	<div ui-view="entertainment"></div>
+	<div ui-view="miscellaneous"></div>
+	<div ui-view="summary"></div>
+	
+	<div class="modal fade text-center" id="incomeModal" ng-controller="IncomeController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Income Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="incomeEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="incomeEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="incomeEntrySubmit()" ui-sref="income">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
