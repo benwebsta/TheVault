@@ -1,19 +1,24 @@
 app.controller("IncomeController", 
-	['$scope', '$http', '$state', '$timeout', 
-		function($scope, $http, $state, $timeout) {
+	['$scope', '$http', '$state', '$timeout', '$rootScope',
+		function($scope, $http, $state, $timeout, $rootScope) {
+		$rootScope.showIncomeTable = false;
 		
-/*		$scope.getAllIncomes = function(){
+		$scope.getAllIncomes = function(){
+			console.log("in get all incomes");
 			$http({
 	    	  method: 'POST',
 	    	  url: 'getAllIncomes',
 	    	  data: $scope.user
 	    	}).then(function successCallback(response) {	
-	    	    $scope.incomes = response.data;
+	    		console.log("success callback");
+	    		$rootScope.incomeEntries = response.data;
+	    	    console.log($rootScope.incomeEntries);
+	    	    $rootScope.showIncomeTable = true;
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
 	    	   	  console.log(response.data);
 	    	  });
-		}*/
+		}
 		
 		
 		$scope.incomeEntrySubmit = function(){
@@ -35,7 +40,7 @@ app.controller("IncomeController",
 		    	   console.log(response.data);
 					$scope.incomeEntry = true;
 					$timeout(closeModal, 1000);
-					//$scope.getAllIncomes();
+					$scope.getAllIncomes();
 		    	  }, function errorCallback(response) {
 		    		  console.log("error");
 		    	   	  console.log(response.data);

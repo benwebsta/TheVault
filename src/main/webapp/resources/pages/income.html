@@ -1,4 +1,23 @@
-<body ng-controller="IncomeController">
-income page
-{{result}}
+<body>
+	<div class="wrapper">
+		<div class="one">One</div>
+		<div class="two title"><h1>Income Page</h1></div>
+		<div class="three">Three</div>
+		<div class="four">Four</div>
+		<div class="five">
+			<table ng-cloak ng-show="showIncomeTable == true">
+				<tr>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Date</th>
+				</tr>
+				<tr ng-repeat="incomeEntry in incomeEntries">
+					<td>{{incomeEntry.amount}}</td>
+					<td>{{incomeEntry.description}}</td>
+					<td>{{incomeEntry.incomeDate}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="six">Six</div>
+	</div>
 </body>

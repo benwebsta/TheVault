@@ -21,7 +21,7 @@ public class IncomeDaoImpl implements IncomeDao{
 			Query query = sess.createQuery("FROM Income WHERE user= :user");
 			query.setParameter("user", user);
 			List<Income> result = query.list();
-			System.out.println(result);
+			System.out.println("INCOMES: \n\n" + result);
 			tx.commit();
 			if(!result.isEmpty())
 				return result;

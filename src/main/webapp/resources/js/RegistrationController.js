@@ -2,8 +2,8 @@ app.controller("RegistrationController",
 	['$scope', '$http', '$rootScope', '$state', '$timeout', '$cookies',
 		 function($scope, $http, $rootScope, $state, $timeout, $cookies) {
 			    
-			    
 			    $scope.register = function(){
+			    	
 			    	console.log("in register");
 			    	$scope.userTaken = null;
 			    	var userCreate = {
@@ -31,15 +31,31 @@ app.controller("RegistrationController",
 							    	  url: 'createNewUser',
 							    	  data: userCreate
 							    	}).then(function successCallback(response) {
+							    		
 							    		var oneMonth = new Date();
 										console.log("today: " + oneMonth);
 										oneMonth.setDate(oneMonth.getDate() + 30);
 										console.log("one month: " + oneMonth)
-										$rootScope.user = response.data;
-										$rootScope.username = response.data.username;
-										$cookies.put('user', $rootScope.user.username, {
-											expires: oneMonth
-										});
+										
+										var userLogin = {
+											username: userCreate.username,
+											password: userCreate.password
+										}
+										
+										$http({
+								    	  method: 'POST',
+								    	  url: 'login',
+								    	  data: userLogin
+								    	}).then(function successCallback(response) {
+								    		$rootScope.user = response.data;
+											$rootScope.username = response.data.username;
+											$cookies.put('user', $rootScope.user.username, {
+												expires: oneMonth
+											});
+								    	  }, function errorCallback(response) {
+								    		  console.log("error");
+								    	  });
+										
 										$state.go("summary");
 							    	  }, function errorCallback(response) {
 							    		  console.log("error");
