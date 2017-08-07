@@ -1,3 +1,39 @@
 <body>
-automobile page
+	<div class="wrapper">
+		<div class="one">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="two title"><h1>Automobile Page</h1></div>
+		<div class="three">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="four">
+			<div class="chartDiv">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="automobileData2" chart-labels="automobileLabels2" chart-series="automobileSeries"></canvas>
+			</div>
+		</div>
+		<div class="five">
+			<table ng-cloak ng-show="showAutomobileTable == true">
+				<tr>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Date</th>
+				</tr>
+				<tr ng-repeat="automobileEntry in automobileEntries">
+					<td>{{automobileEntry.amount}}</td>
+					<td>{{automobileEntry.description}}</td>
+					<td>{{automobileEntry.incomeDate}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="six">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+	</div>
 </body>

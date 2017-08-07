@@ -18,19 +18,20 @@ app.controller("IncomeController",
 	    	    	$rootScope.showIncomeTable = true;
 	    	    	
 	    	    
-				$rootScope.labels = new Array();
-				$rootScope.data = new Array();
-				$rootScope.labels2 = new Array();
-				$rootScope.data2 = new Array();
-				$rootScope.series = ['Income'];
+				$rootScope.incomeLabels = new Array();
+				$rootScope.incomeData = new Array();
+				$rootScope.incomeLabels2 = new Array();
+				$rootScope.incomeData2 = new Array();
+				$rootScope.incomeSeries = ['Income'];
 				$rootScope.options = {legend: {display: true}};
+				
 				for(i = 0; i < responseArray.length; i++){
 					console.log(responseArray[i]);
-					$rootScope.labels.push(responseArray[i].description);
-					$rootScope.data.push(responseArray[i].amount);
+					$rootScope.incomeLabels.push(responseArray[i].description);
+					$rootScope.incomeData.push(responseArray[i].amount);
 
-					$rootScope.labels2.push(responseArray[i].incomeDate);
-					$rootScope.data2.push(responseArray[i].amount);
+					$rootScope.incomeLabels2.push(responseArray[i].incomeDate);
+					$rootScope.incomeData2.push(responseArray[i].amount);
 				}
 				
 	    	  }, function errorCallback(response) {

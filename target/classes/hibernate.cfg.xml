@@ -12,8 +12,14 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 
 		<property name="hibernate.show_sql">true</property>
-		<mapping class="com.thevault.beans.User"/>
+		<mapping class="com.thevault.beans.Automobile"/>
+		<mapping class="com.thevault.beans.Entertainment"/>
+		<mapping class="com.thevault.beans.Food"/>
+		<mapping class="com.thevault.beans.HealthAndFitness"/>
 		<mapping class="com.thevault.beans.Income"/>
+		<mapping class="com.thevault.beans.Miscellaneous"/>
+		<mapping class="com.thevault.beans.RentAndUtility"/>
+		<mapping class="com.thevault.beans.User"/>
 		
 	</session-factory>
 </hibernate-configuration>

@@ -71,7 +71,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav" ng-if="user" ng-cloak>
 	        <li ui-sref-active="active" ng-controller="IncomeController"><a ui-sref="income" ng-click="getAllIncomes()">Income<span class="sr-only">(current)</span></a></li>
-	        <li ui-sref-active="active"><a ui-sref="automobile">Automobile</a></li>
+	        <li ui-sref-active="active" ng-controller="AutomobileController"><a ui-sref="automobile" ng-click="getAllAutomobiles()">Automobile</a></li>
 	        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
 	        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
 	        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
@@ -85,7 +85,7 @@
 	          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a ng-click="incomeEntry()">Income<span class="sr-only">(current)</span></a></li>
-		        <li ui-sref-active="active"><a ui-sref="automobile">Automobile</a></li>
+		        <li><a ng-click="automobileEntry()">Automobile</a></li>
 		        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
 		        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
 		        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
@@ -146,6 +146,39 @@
 			</div>
 		</div>
 	</div>
-	
+
+	<div class="modal fade text-center" id="automobileModal" ng-controller="AutomobileController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Automobile Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="automobileEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="automobileEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="automobileEntrySubmit()" ui-sref="automobile">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
