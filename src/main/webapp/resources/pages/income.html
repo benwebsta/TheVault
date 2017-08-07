@@ -1,9 +1,21 @@
 <body>
 	<div class="wrapper">
-		<div class="one">One</div>
+		<div class="one">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+			</div>
+		</div>
 		<div class="two title"><h1>Income Page</h1></div>
-		<div class="three">Three</div>
-		<div class="four">Four</div>
+		<div class="three">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="four">
+			<div class="chartDiv">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="data2" chart-labels="labels2" chart-series="series"></canvas>
+			</div>
+		</div>
 		<div class="five">
 			<table ng-cloak ng-show="showIncomeTable == true">
 				<tr>
@@ -18,6 +30,10 @@
 				</tr>
 			</table>
 		</div>
-		<div class="six">Six</div>
+		<div class="six">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+			</div>
+		</div>
 	</div>
 </body>

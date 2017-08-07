@@ -4,29 +4,33 @@
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine {
+	/* border-style: solid;
+    border-width: 5px; */
+}
 .one {
-  grid-column: 1 / 3;
-  grid-row: 1;
+  grid-column: 1;
+  grid-row: 1 / 3;
 }
 .two { 
   grid-column: 2;
   grid-row: 1 / 3;
 }
 .three {
-  grid-column: 1;
-  grid-row: 2 / 5;
+  grid-column: 3;
+  grid-row: 1 / 3;
 }
 .four {
-  grid-column: 3;
-  grid-row: 3;
+  grid-column: 1;
+  grid-row: 3 / 5;
 }
 .five {
   grid-column: 2;
-  grid-row: 3 / 4;
+  grid-row: 3 / 5;
 }
 .six {
   grid-column: 3;
-  grid-row: 4;
+  grid-row: 3 / 5;
 }
 .title {
 	text-align: center;

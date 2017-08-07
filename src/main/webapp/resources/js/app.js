@@ -1,7 +1,10 @@
-var app = angular.module('thevault', ['ui.router', 'ngCookies', 'ngMessages']);
+var app = angular.module('thevault', ['ui.router', 'ngCookies', 'ngMessages', 'chart.js']);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
-	function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'ChartJsProvider',
+	function ($stateProvider, $urlRouterProvider, $locationProvider, ChartJsProvider) {
+	
+	ChartJsProvider.setOptions({ colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] });
+	
     $urlRouterProvider.otherwise('/login');
     
     $stateProvider	
