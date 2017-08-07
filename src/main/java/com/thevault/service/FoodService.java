@@ -2,11 +2,14 @@ package com.thevault.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.thevault.beans.Food;
 import com.thevault.beans.User;
 import com.thevault.dao.FoodDao;
 import com.thevault.dao.FoodDaoImpl;
 
+@Component
 public class FoodService {
 	FoodDao foodDao = new FoodDaoImpl();
 	

@@ -33,5 +33,9 @@ app.controller("NavbarController",
 				console.log("income entry click");
 				$('#incomeModal').modal('show');
 			}
+			$scope.automobileEntry = function(){
+				console.log("automobile entry click");
+				$('#automobileModal').modal('show');
+			}
 	
 	}]);

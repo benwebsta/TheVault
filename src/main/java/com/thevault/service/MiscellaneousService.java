@@ -2,11 +2,14 @@ package com.thevault.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.thevault.beans.Miscellaneous;
 import com.thevault.beans.User;
 import com.thevault.dao.MiscellaneousDao;
 import com.thevault.dao.MiscellaneousDaoImpl;
 
+@Component
 public class MiscellaneousService {
 	MiscellaneousDao miscellaneousDao = new MiscellaneousDaoImpl();
 	

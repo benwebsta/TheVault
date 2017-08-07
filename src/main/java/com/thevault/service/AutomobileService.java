@@ -2,11 +2,14 @@ package com.thevault.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.thevault.beans.Automobile;
 import com.thevault.beans.User;
 import com.thevault.dao.AutomobileDao;
 import com.thevault.dao.AutomobileDaoImpl;
 
+@Component
 public class AutomobileService {
 	AutomobileDao automobileDao = new AutomobileDaoImpl();
 	

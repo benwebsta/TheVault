@@ -2,11 +2,14 @@ package com.thevault.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.thevault.beans.HealthAndFitness;
 import com.thevault.beans.User;
 import com.thevault.dao.HealthAndFitnessDao;
 import com.thevault.dao.HealthAndFitnessDaoImpl;
 
+@Component
 public class HealthAndFitnessService {
 	HealthAndFitnessDao healthAndFitnessDao = new HealthAndFitnessDaoImpl();
 	

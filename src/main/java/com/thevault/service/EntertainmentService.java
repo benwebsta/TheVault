@@ -2,11 +2,14 @@ package com.thevault.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.thevault.beans.Entertainment;
 import com.thevault.beans.User;
 import com.thevault.dao.EntertainmentDao;
 import com.thevault.dao.EntertainmentDaoImpl;
 
+@Component
 public class EntertainmentService {
 	EntertainmentDao entertainmentDao = new EntertainmentDaoImpl();
 	
