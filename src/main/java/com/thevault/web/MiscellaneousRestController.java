@@ -38,7 +38,7 @@ public class MiscellaneousRestController {
 		return miscellaneous;
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/getAllMiscellaneouss")
+	@RequestMapping(method=RequestMethod.POST, value="/getAllMiscellaneouses")
 	public @ResponseBody List<Miscellaneous> getAllMiscellaneouss_JSON(@RequestBody String userJSON){
 		System.out.println("POST get Miscellaneouss rest controller hit");
 		System.out.println("JSON: " + userJSON);
