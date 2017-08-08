@@ -80,7 +80,7 @@
 	        <li ui-sref-active="active"><a>{{username}}</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right" ng-if="user" ng-cloak>
-	        <li ><a ui-sref="summary">Summary</a></li>
+	        <li ui-sref-active="active" ng-controller="SummaryController"><a ui-sref="summary" ng-click="getAllFinances()">Summary</a></li>
 	        <li class="dropdown">
 	          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
