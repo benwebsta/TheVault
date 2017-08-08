@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.thevault.beans.Food;
-import com.thevault.beans.Income;
 import com.thevault.beans.User;
 import com.thevault.service.FoodService;
 
+@RestController
 public class FoodRestController {
 
 	@Autowired
@@ -38,7 +39,7 @@ public class FoodRestController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/getAllFoods")
-	public @ResponseBody List<Food> getAllIncomes_JSON(@RequestBody String userJSON){
+	public @ResponseBody List<Food> getAllFoods_JSON(@RequestBody String userJSON){
 		System.out.println("POST get foods rest controller hit");
 		System.out.println("JSON: " + userJSON);
 		
