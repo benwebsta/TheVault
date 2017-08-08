@@ -18,7 +18,7 @@ public class RentAndUtilityService {
 		System.out.println("for user: " + user);
 		return rentAndUtilityDao.getRentAndUtilitysByUser(user);
 	}
-	public RentAndUtility createIncome(RentAndUtility rentAndUtility){
+	public RentAndUtility createRentAndUtility(RentAndUtility rentAndUtility){
 		System.out.println("in createRentAndUtility service");
 		System.out.println("creating rentAndUtility: " + rentAndUtility);
 		return rentAndUtilityDao.createRentAndUtility(rentAndUtility);

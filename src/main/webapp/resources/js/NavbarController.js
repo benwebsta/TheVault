@@ -37,5 +37,25 @@ app.controller("NavbarController",
 				console.log("automobile entry click");
 				$('#automobileModal').modal('show');
 			}
+			$scope.rentAndUtilitiesEntry = function(){
+				console.log("rentAndUtilities entry click");
+				$('#rentAndUtilitiesModal').modal('show');
+			}
+			$scope.foodEntry = function(){
+				console.log("food entry click");
+				$('#foodModal').modal('show');
+			}
+			$scope.healthAndFitnessEntry = function(){
+				console.log("healthAndFitness entry click");
+				$('#healthAndFitnessModal').modal('show');
+			}
+			$scope.entertainmentEntry = function(){
+				console.log("entertainment entry click");
+				$('#entertainmentModal').modal('show');
+			}
+			$scope.miscellaneousEntry = function(){
+				console.log("miscellaneous entry click");
+				$('#miscellaneousModal').modal('show');
+			}
 	
 	}]);

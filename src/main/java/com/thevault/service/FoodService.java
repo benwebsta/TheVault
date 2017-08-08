@@ -18,7 +18,7 @@ public class FoodService {
 		System.out.println("for user: " + user);
 		return foodDao.getFoodsByUser(user);
 	}
-	public Food createIncome(Food food){
+	public Food createFood(Food food){
 		System.out.println("in createFood service");
 		System.out.println("creating food: " + food);
 		return foodDao.createFood(food);

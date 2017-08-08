@@ -1,3 +1,39 @@
 <body>
-entertainment page
+	<div class="wrapper">
+		<div class="one">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="entertainmentData" chart-labels="entertainmentLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="two title"><h1>Entertainment Page</h1></div>
+		<div class="three">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="entertainmentData" chart-labels="entertainmentLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="four">
+			<div class="chartDiv">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="entertainmentData2" chart-labels="entertainmentLabels2" chart-series="entertainmentSeries"></canvas>
+			</div>
+		</div>
+		<div class="five">
+			<table ng-cloak ng-show="showEntertainmentTable == true">
+				<tr>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Date</th>
+				</tr>
+				<tr ng-repeat="entertainmentEntry in entertainmentEntries">
+					<td>{{entertainmentEntry.amount}}</td>
+					<td>{{entertainmentEntry.description}}</td>
+					<td>{{entertainmentEntry.entertainmentDate}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="six">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="entertainmentData" chart-labels="entertainmentLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+	</div>
 </body>

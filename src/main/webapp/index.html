@@ -72,11 +72,11 @@
 	      <ul class="nav navbar-nav" ng-if="user" ng-cloak>
 	        <li ui-sref-active="active" ng-controller="IncomeController"><a ui-sref="income" ng-click="getAllIncomes()">Income<span class="sr-only">(current)</span></a></li>
 	        <li ui-sref-active="active" ng-controller="AutomobileController"><a ui-sref="automobile" ng-click="getAllAutomobiles()">Automobile</a></li>
-	        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
-	        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
-	        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
-	        <li ui-sref-active="active"><a ui-sref="entertainment">Entertainment</a></li>
-	        <li ui-sref-active="active"><a ui-sref="miscellaneous">Miscellaneous</a></li>
+	        <li ui-sref-active="active" ng-controller="RentAndUtilitiesController"><a ui-sref="rentAndUtilities" ng-click="getAllRentAndUtilities()">Rent and Utilities</a></li>
+	        <li ui-sref-active="active" ng-controller="FoodController"><a ui-sref="food" ng-click="getALlFoods()">Food</a></li>
+	        <li ui-sref-active="active" ng-controller="HealthAndFitnessController"><a ui-sref="healthAndFitness" ng-click="getAllHealthAndFitnesses()">Health and Fitness</a></li>
+	        <li ui-sref-active="active" ng-controller="EntertainmentController"><a ui-sref="entertainment" ng-click="getAllEntertainments()">Entertainment</a></li>
+	        <li ui-sref-active="active" ng-controller="MiscellaneousController"><a ui-sref="miscellaneous" ng-click="getAllMiscellaneouses()">Miscellaneous</a></li>
 	        <li ui-sref-active="active"><a>{{username}}</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right" ng-if="user" ng-cloak>
@@ -86,11 +86,11 @@
 	          <ul class="dropdown-menu">
 	            <li><a ng-click="incomeEntry()">Income<span class="sr-only">(current)</span></a></li>
 		        <li><a ng-click="automobileEntry()">Automobile</a></li>
-		        <li ui-sref-active="active"><a ui-sref="rentAndUtilities">Rent and Utilities</a></li>
-		        <li ui-sref-active="active"><a ui-sref="food">Food</a></li>
-		        <li ui-sref-active="active"><a ui-sref="healthAndFitness">Health and Fitness</a></li>
-		        <li ui-sref-active="active"><a ui-sref="entertainment">Entertainment</a></li>
-		        <li ui-sref-active="active"><a ui-sref="miscellaneous">Miscellaneous</a></li>
+		        <li><a ng-click="rentAndUtilitiesEntry()">Rent and Utilities</a></li>
+		        <li><a ng-click="foodEntry()">Food</a></li>
+		        <li><a ng-click="healthAndFitnessEntry()">Health and Fitness</a></li>
+		        <li><a ng-click="entertainmentEntry()">Entertainment</a></li>
+		        <li><a ng-click="miscellaneousEntry()">Miscellaneous</a></li>
 	          </ul>
 	        </li>
 	        <li>
@@ -180,5 +180,176 @@
 			</div>
 		</div>
 	</div>	
+	
+	<div class="modal fade text-center" id="rentAndUtilitiesModal" ng-controller="RentAndUtilitiesController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">RentAndUtilities Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="rentAndUtilitiesEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="rentAndUtilitiesEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="rentAndUtilitiesEntrySubmit()" ui-sref="rentAndUtilities">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal fade text-center" id="foodModal" ng-controller="FoodController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Food Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="foodEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="foodEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="foodEntrySubmit()" ui-sref="food">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal fade text-center" id="healthAndFitnessModal" ng-controller="HealthAndFitnessController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">HealthAndFitness Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="healthAndFitnessEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="healthAndFitnessEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="healthAndFitnessEntrySubmit()" ui-sref="healthAndFitness">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal fade text-center" id="entertainmentModal" ng-controller="EntertainmentController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Entertainment Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="entertainmentEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="entertainmentEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="entertainmentEntrySubmit()" ui-sref="entertainment">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal fade text-center" id="miscellaneousModal" ng-controller="MiscellaneousController">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Miscellaneous Entry</h3>
+				</div>
+				<div>
+					<div class="modal-body">
+						<input type="number" placeholder="amount" ng-model="amount" required><br><br>
+						<input type="text" placeholder="description" ng-model="description" required>
+    				</div>
+					<div class="modal-footer">
+						<div class="row">
+   							<div class="col-sm-6">
+   								<div class="alert alert-success" ng-show="miscellaneousEntry == true">
+									<strong>Success!</strong> Entry Success
+								</div>
+								<div class="alert alert-danger" ng-show="miscellaneousEntry == false">
+									<strong>Alert!</strong> Entry Failed
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-primary" ng-click="miscellaneousEntrySubmit()" ui-sref="miscellaneous">Save Entry</button>
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
