@@ -1,12 +1,39 @@
 <body>
-summary page
-Welcome {{username}}<br><br>
-
-automobile: -{{automobileTotal}}<br><br>
-entertainment: -{{entertainmentTotal}}<br><br>
-food: -{{foodTotal}}<br><br>
-health and fitness: -{{healthAndFitnessTotal}}<br><br>
-income: +{{incomeTotal}}<br><br>
-miscellaneous: -{{miscellaneousTotal}}<br><br>
-rent and utility: -{{rentAndUtilityTotal}}<br><br>
+	<div class="wrapper">
+		<div class="one">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="summaryData" chart-labels="summaryLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="two title"><h1>Summary Page</h1></div>
+		<div class="three">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="summaryData" chart-labels="summaryLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="four">
+			<div class="chartDiv">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="summaryData2" chart-labels="summaryLabels2" chart-series="summarySeries"></canvas>
+			</div>
+		</div>
+		<div class="five">
+			<table ng-cloak ng-show="showSummaryTable == true">
+				<tr>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Date</th>
+				</tr>
+				<tr ng-repeat="summaryEntry in summaryEntries">
+					<td>{{summaryEntry.amount}}</td>
+					<td>{{summaryEntry.description}}</td>
+					<td>{{summaryEntry.summaryDate}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="six">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="summaryData" chart-labels="summaryLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+	</div>
 </body>
