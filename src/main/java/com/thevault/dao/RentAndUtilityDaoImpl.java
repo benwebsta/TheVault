@@ -12,7 +12,7 @@ import com.thevault.config.HibernateUtil;
 
 public class RentAndUtilityDaoImpl implements RentAndUtilityDao{
 
-	public List<RentAndUtility> getRentAndUtilitysByUser(User user) {
+	public List<RentAndUtility> getRentAndUtilitiesByUser(User user) {
 		Session sess = HibernateUtil.getSession();
 		Transaction tx;
 		

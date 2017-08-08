@@ -13,10 +13,10 @@ import com.thevault.dao.RentAndUtilityDaoImpl;
 public class RentAndUtilityService {
 	RentAndUtilityDao rentAndUtilityDao = new RentAndUtilityDaoImpl();
 	
-	public List<RentAndUtility> getRentAndUtilitysByUser(User user){
-		System.out.println("in getRentAndUtilitysByUser service");
+	public List<RentAndUtility> getRentAndUtilitiesByUser(User user){
+		System.out.println("in getRentAndUtilitiesByUser service");
 		System.out.println("for user: " + user);
-		return rentAndUtilityDao.getRentAndUtilitysByUser(user);
+		return rentAndUtilityDao.getRentAndUtilitiesByUser(user);
 	}
 	public RentAndUtility createRentAndUtility(RentAndUtility rentAndUtility){
 		System.out.println("in createRentAndUtility service");

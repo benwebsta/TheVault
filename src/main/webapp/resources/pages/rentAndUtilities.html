@@ -1,5 +1,39 @@
 <body>
-rent and utilities page
-
-entry: {{entry}}
+	<div class="wrapper">
+		<div class="one">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="rentAndUtilitiesData" chart-labels="rentAndUtilitiesLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="two title"><h1>RentAndUtilities Page</h1></div>
+		<div class="three">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="rentAndUtilitiesData" chart-labels="rentAndUtilitiesLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+		<div class="four">
+			<div class="chartDiv">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="rentAndUtilitiesData2" chart-labels="rentAndUtilitiesLabels2" chart-series="rentAndUtilitiesSeries"></canvas>
+			</div>
+		</div>
+		<div class="five">
+			<table ng-cloak ng-show="showRentAndUtilitiesTable == true">
+				<tr>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>Date</th>
+				</tr>
+				<tr ng-repeat="rentAndUtilitiesEntry in rentAndUtilitiesEntries">
+					<td>{{rentAndUtilitiesEntry.amount}}</td>
+					<td>{{rentAndUtilitiesEntry.description}}</td>
+					<td>{{rentAndUtilitiesEntry.rentAndUtilitiesDate}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="six">
+			<div class="chartDiv">
+				<canvas id="pie" class="chart chart-pie myChart" chart-data="rentAndUtilitiesData" chart-labels="rentAndUtilitiesLabels" chart-options="options"></canvas> 
+			</div>
+		</div>
+	</div>
 </body>

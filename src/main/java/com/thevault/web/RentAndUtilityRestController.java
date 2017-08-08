@@ -38,7 +38,7 @@ public class RentAndUtilityRestController {
 		return rentAndUtility;
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/getAllRentAndUtilitys")
+	@RequestMapping(method=RequestMethod.POST, value="/getAllRentAndUtilities")
 	public @ResponseBody List<RentAndUtility> getAllRentAndUtilitys_JSON(@RequestBody String userJSON){
 		System.out.println("POST get RentAndUtilitys rest controller hit");
 		System.out.println("JSON: " + userJSON);
@@ -47,8 +47,8 @@ public class RentAndUtilityRestController {
 		User user = gson.fromJson(userJSON, User.class);		
 		
 		System.out.println("user: " + user);
-		List<RentAndUtility> rentAndUtilitys = rentAndUtilityService.getRentAndUtilitysByUser(user);
-		System.out.println(rentAndUtilitys);
-		return rentAndUtilitys;
+		List<RentAndUtility> rentAndUtilities = rentAndUtilityService.getRentAndUtilitiesByUser(user);
+		System.out.println(rentAndUtilities);
+		return rentAndUtilities;
 	}
 }
