@@ -14,6 +14,7 @@ app.controller("IncomeController",
 	    		responseArray = response.data;
 	    		console.log("success callback");
 	    		$rootScope.incomeEntries = response.data;
+	    		$rootScope.selectedMonth = "All Months";
 	    	    
 	    	    if(response.data != "")
 	    	    	$rootScope.showIncomeTable = true;
@@ -109,6 +110,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = january;
 			display(january);
+			$rootScope.selectedMonth = "January";
 		}
 		$scope.february = function(){
 			var february = monthFilter($rootScope.incomeArray, function(income) {
@@ -117,6 +119,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = february;
 			display(february);
+			$rootScope.selectedMonth = "February";
 		}
 		$scope.march = function(){
 			var march = monthFilter($rootScope.incomeArray, function(income) {
@@ -125,6 +128,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = march;
 			display(march);
+			$rootScope.selectedMonth = "March";
 		}
 		$scope.april = function(){
 			var april = monthFilter($rootScope.incomeArray, function(income) {
@@ -133,6 +137,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = april;
 			display(april);
+			$rootScope.selectedMonth = "April";
 		}
 		$scope.may = function(){
 			var may = monthFilter($rootScope.incomeArray, function(income) {
@@ -141,6 +146,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = may;
 			display(may);
+			$rootScope.selectedMonth = "May";
 		}
 		$scope.june = function(){
 			var june = monthFilter($rootScope.incomeArray, function(income) {
@@ -149,6 +155,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = june;
 			display(june);
+			$rootScope.selectedMonth = "June";
 		}
 		$scope.july = function(){
 			var july = monthFilter($rootScope.incomeArray, function(income) {
@@ -157,6 +164,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = july;
 			display(july);
+			$rootScope.selectedMonth = "July";
 		}
 		$scope.august = function(){
 			var august = monthFilter($rootScope.incomeArray, function(income) {
@@ -165,6 +173,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = august;
 			display(august);
+			$rootScope.selectedMonth = "August";
 		}
 		$scope.september = function(){
 			var september = monthFilter($rootScope.incomeArray, function(income) {
@@ -173,6 +182,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = september;
 			display(september);
+			$rootScope.selectedMonth = "September";
 		}
 		$scope.october = function(){
 			var october = monthFilter($rootScope.incomeArray, function(income) {
@@ -181,6 +191,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = october;
 			display(october);
+			$rootScope.selectedMonth = "October";
 		}
 		$scope.november = function(){
 			var november = monthFilter($rootScope.incomeArray, function(income) {
@@ -189,6 +200,7 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = november;
 			display(november);
+			$rootScope.selectedMonth = "November";
 		}
 		$scope.december = function(){
 			var december = monthFilter($rootScope.incomeArray, function(income) {
@@ -197,5 +209,6 @@ app.controller("IncomeController",
 			});
 			$rootScope.incomeEntries = december;
 			display(december);
+			$rootScope.selectedMonth = "December";
 		}
 	}]);

@@ -17,8 +17,8 @@
 			</div>
 		</div>
 		<div class="five">
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Month
+			<div class="dropdown" ng-cloak ng-show="showIncomeTable == true">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
 				    <li ng-click="all()"><a>All Months</a></li>
