@@ -3,6 +3,7 @@ app.controller("IncomeController",
 		function($scope, $http, $state, $timeout, $rootScope) {
 		$rootScope.showIncomeTable = false;
 		var responseArray;
+		$scope.allSelected = false;
 		
 		$scope.getAllIncomes = function(){
 			console.log("in get all incomes");
@@ -14,15 +15,65 @@ app.controller("IncomeController",
 	    		responseArray = response.data;
 	    		console.log("success callback");
 	    		$rootScope.incomeEntries = response.data;
-	    		$rootScope.selectedMonth = "All Months";
-	    	    
+	    		
 	    	    if(response.data != "")
 	    	    	$rootScope.showIncomeTable = true;
 	    	    				
 				//sort by date then display in charts
 				responseArray.sort(sortDatesAsc);
 				$rootScope.incomeArray = responseArray;
-				display(responseArray);
+				//display(responseArray);
+				
+				if($scope.allSelected == false){
+		    		if(new Date() > new Date("12-31-2016") && new Date() < new Date("01-31-2017")){
+		    			$rootScope.selectedMonth = "January";
+		    			$scope.january();
+		    		}
+		    		else if(new Date() > new Date("01-31-2017") && new Date() < new Date("02-28-2017")){
+		    			$rootScope.selectedMonth = "February";
+		    			$scope.february();
+		    		}
+		    		else if(new Date() > new Date("02-28-2017") && new Date() < new Date("03-31-2017")){
+		    			$rootScope.selectedMonth = "March";
+		    			$scope.march();
+		    		}
+		    		else if(new Date() > new Date("03-31-2017") && new Date() < new Date("04-30-2017")){
+		    			$rootScope.selectedMonth = "April";
+		    			$scope.april();
+		    		}
+		    		else if(new Date() > new Date("04-30-2017") && new Date() < new Date("05-31-2017")){
+		    			$rootScope.selectedMonth = "May";
+		    			$scope.may();
+		    		}
+		    		else if(new Date() > new Date("05-31-2016") && new Date() < new Date("06-30-2017")){
+		    			$rootScope.selectedMonth = "June";
+		    			$scope.june();
+		    		}
+		    		else if(new Date() > new Date("06-30-2017") && new Date() < new Date("07-31-2017")){
+		    			$rootScope.selectedMonth = "July";
+		    			$scope.july();
+		    		}
+		    		else if(new Date() > new Date("07-31-2016") && new Date() < new Date("08-31-2017")){
+		    			$rootScope.selectedMonth = "August";
+		    			$scope.august();
+		    		}
+		    		else if(new Date() > new Date("08-31-2016") && new Date() < new Date("09-30-2017")){
+		    			$rootScope.selectedMonth = "September";
+		    			$scope.september();
+		    		}
+		    		else if(new Date() > new Date("09-30-2016") && new Date() < new Date("10-31-2017")){
+		    			$rootScope.selectedMonth = "October";
+		    			$scope.october();
+		    		}
+		    		else if(new Date() > new Date("10-31-2016") && new Date() < new Date("11-30-2017")){
+		    			$rootScope.selectedMonth = "November";
+		    			$scope.november();
+		    		}
+		    		else if(new Date() > new Date("11-30-2016") && new Date() < new Date("12-31-2017")){
+		    			$rootScope.selectedMonth = "December";
+		    			$scope.december();
+		    		}
+				}
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -100,6 +151,7 @@ app.controller("IncomeController",
 		}
 		  
 		$scope.all = function(){
+			$scope.allSelected = true;
 			$scope.getAllIncomes();
 			display($rootScope.incomeArray);
 		}
