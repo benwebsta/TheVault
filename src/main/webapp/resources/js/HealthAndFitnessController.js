@@ -25,14 +25,9 @@ app.controller("HealthAndFitnessController",
 				$rootScope.healthAndFitnessSeries = ['HealthAndFitness'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.healthAndFitnessLabels.push(responseArray[i].description);
-					$rootScope.healthAndFitnessData.push(responseArray[i].amount);
-
-					$rootScope.healthAndFitnessLabels2.push(responseArray[i].healthAndFitnessDate);
-					$rootScope.healthAndFitnessData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -72,6 +67,26 @@ app.controller("HealthAndFitnessController",
 			$(".modal-body input").val("");
 			$('#healthAndFitnessModal').modal('hide');
 			$scope.healthAndFitnessEntry = null;
+		}
+		
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.healthAndFitnessDate).getTime() > new Date(date2.healthAndFitnessDate).getTime())	return 1;
+			if (new Date(date1.healthAndFitnessDate).getTime() < new Date(date2.healthAndFitnessDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.healthAndFitnessDate).getTime() > new Date(date2.healthAndFitnessDate).getTime()) return -1;
+			if (new Date(date1.healthAndFitnessDate).getTime() < new Date(date2.healthAndFitnessDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.healthAndFitnessLabels.push(responseArray[i].description);
+				$rootScope.healthAndFitnessData.push(responseArray[i].amount);
+
+				$rootScope.healthAndFitnessLabels2.push(responseArray[i].healthAndFitnessDate);
+				$rootScope.healthAndFitnessData2.push(responseArray[i].amount);
+			}
 		}
 		  
 	}]);

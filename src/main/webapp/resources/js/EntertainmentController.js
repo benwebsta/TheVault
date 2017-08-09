@@ -25,14 +25,9 @@ app.controller("EntertainmentController",
 				$rootScope.entertainmentSeries = ['Entertainment'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.entertainmentLabels.push(responseArray[i].description);
-					$rootScope.entertainmentData.push(responseArray[i].amount);
-
-					$rootScope.entertainmentLabels2.push(responseArray[i].entertainmentDate);
-					$rootScope.entertainmentData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -72,6 +67,26 @@ app.controller("EntertainmentController",
 			$(".modal-body input").val("");
 			$('#entertainmentModal').modal('hide');
 			$scope.entertainmentEntry = null;
+		}
+		
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.entertainmentDate).getTime() > new Date(date2.entertainmentDate).getTime())	return 1;
+			if (new Date(date1.entertainmentDate).getTime() < new Date(date2.entertainmentDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.entertainmentDate).getTime() > new Date(date2.entertainmentDate).getTime()) return -1;
+			if (new Date(date1.entertainmentDate).getTime() < new Date(date2.entertainmentDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.entertainmentLabels.push(responseArray[i].description);
+				$rootScope.entertainmentData.push(responseArray[i].amount);
+
+				$rootScope.entertainmentLabels2.push(responseArray[i].entertainmentDate);
+				$rootScope.entertainmentData2.push(responseArray[i].amount);
+			}
 		}
 		  
 	}]);

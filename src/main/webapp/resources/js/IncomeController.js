@@ -25,14 +25,9 @@ app.controller("IncomeController",
 				$rootScope.incomeSeries = ['Income'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.incomeLabels.push(responseArray[i].description);
-					$rootScope.incomeData.push(responseArray[i].amount);
-
-					$rootScope.incomeLabels2.push(responseArray[i].incomeDate);
-					$rootScope.incomeData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -72,6 +67,26 @@ app.controller("IncomeController",
 			$(".modal-body input").val("");
 			$('#incomeModal').modal('hide');
 			$scope.incomeEntry = null;
+		}
+		
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.incomeDate).getTime() > new Date(date2.incomeDate).getTime())	return 1;
+			if (new Date(date1.incomeDate).getTime() < new Date(date2.incomeDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.incomeDate).getTime() > new Date(date2.incomeDate).getTime()) return -1;
+			if (new Date(date1.incomeDate).getTime() < new Date(date2.incomeDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.incomeLabels.push(responseArray[i].description);
+				$rootScope.incomeData.push(responseArray[i].amount);
+
+				$rootScope.incomeLabels2.push(responseArray[i].incomeDate);
+				$rootScope.incomeData2.push(responseArray[i].amount);
+			}
 		}
 		  
 	}]);

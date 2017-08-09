@@ -25,14 +25,9 @@ app.controller("FoodController",
 				$rootScope.foodSeries = ['Food'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.foodLabels.push(responseArray[i].description);
-					$rootScope.foodData.push(responseArray[i].amount);
-
-					$rootScope.foodLabels2.push(responseArray[i].foodDate);
-					$rootScope.foodData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -72,6 +67,26 @@ app.controller("FoodController",
 			$(".modal-body input").val("");
 			$('#foodModal').modal('hide');
 			$scope.foodEntry = null;
+		}
+		
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.foodDate).getTime() > new Date(date2.foodDate).getTime())	return 1;
+			if (new Date(date1.foodDate).getTime() < new Date(date2.foodDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.foodDate).getTime() > new Date(date2.foodDate).getTime()) return -1;
+			if (new Date(date1.foodDate).getTime() < new Date(date2.foodDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.foodLabels.push(responseArray[i].description);
+				$rootScope.foodData.push(responseArray[i].amount);
+
+				$rootScope.foodLabels2.push(responseArray[i].foodDate);
+				$rootScope.foodData2.push(responseArray[i].amount);
+			}
 		}
 		  
 	}]);

@@ -26,14 +26,9 @@ app.controller("AutomobileController",
 				$rootScope.automobileSeries = ['Automobile'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.automobileLabels.push(responseArray[i].description);
-					$rootScope.automobileData.push(responseArray[i].amount);
-
-					$rootScope.automobileLabels2.push(responseArray[i].automobileDate);
-					$rootScope.automobileData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -75,4 +70,24 @@ app.controller("AutomobileController",
 			$scope.automobileEntry = null;
 		}
 		  
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.automobileDate).getTime() > new Date(date2.automobileDate).getTime())	return 1;
+			if (new Date(date1.automobileDate).getTime() < new Date(date2.automobileDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.automobileDate).getTime() > new Date(date2.automobileDate).getTime()) return -1;
+			if (new Date(date1.automobileDate).getTime() < new Date(date2.automobileDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.automobileLabels.push(responseArray[i].description);
+				$rootScope.automobileData.push(responseArray[i].amount);
+
+				$rootScope.automobileLabels2.push(responseArray[i].automobileDate);
+				$rootScope.automobileData2.push(responseArray[i].amount);
+			}
+		}
+		
 	}]);

@@ -25,14 +25,9 @@ app.controller("RentAndUtilitiesController",
 				$rootScope.rentAndUtilitiesSeries = ['RentAndUtilities'];
 				$rootScope.options = {legend: {display: true}};
 				
-				for(i = 0; i < responseArray.length; i++){
-					console.log(responseArray[i]);
-					$rootScope.rentAndUtilitiesLabels.push(responseArray[i].description);
-					$rootScope.rentAndUtilitiesData.push(responseArray[i].amount);
-
-					$rootScope.rentAndUtilitiesLabels2.push(responseArray[i].rentAndUtilitiesDate);
-					$rootScope.rentAndUtilitiesData2.push(responseArray[i].amount);
-				}
+				//sort by date then display in charts
+				responseArray.sort(sortDatesAsc);
+				display(responseArray);
 				
 	    	  }, function errorCallback(response) {
 	    		  console.log("error");
@@ -72,6 +67,26 @@ app.controller("RentAndUtilitiesController",
 			$(".modal-body input").val("");
 			$('#rentAndUtilitiesModal').modal('hide');
 			$scope.rentAndUtilitiesEntry = null;
+		}
+		
+		var sortDatesAsc = function(date1, date2){
+			if(new Date(date1.rentAndUtilityDate).getTime() > new Date(date2.rentAndUtilityDate).getTime())	return 1;
+			if (new Date(date1.rentAndUtilityDate).getTime() < new Date(date2.rentAndUtilityDate).getTime()) return -1;
+			return 0;
+		}
+		var sortDatesDesc = function(date1, date2){
+			if(new Date(date1.rentAndUtilityDate).getTime() > new Date(date2.rentAndUtilityDate).getTime()) return -1;
+			if (new Date(date1.rentAndUtilityDate).getTime() < new Date(date2.rentAndUtilityDate).getTime()) return 1;
+			return 0;
+		}
+		var display = function(responseArray){
+			for(i = 0; i < responseArray.length; i++){
+				$rootScope.rentAndUtilitiesLabels.push(responseArray[i].description);
+				$rootScope.rentAndUtilitiesData.push(responseArray[i].amount);
+
+				$rootScope.rentAndUtilitiesLabels2.push(responseArray[i].rentAndUtilityDate);
+				$rootScope.rentAndUtilitiesData2.push(responseArray[i].amount);
+			}
 		}
 		  
 	}]);
