@@ -20,12 +20,14 @@
 			<table ng-cloak ng-show="showSummaryTable == true">
 				<tr>
 					<th>Amount</th>
+					<th>Group</th>
 					<th>Description</th>
 					<th>Date</th>
 				</tr>
 				<tr ng-repeat="summaryEntry in summaryEntries">
 					<td>{{summaryEntry.amount}}</td>
 					<td>{{summaryEntry.group}}</td>
+					<td>{{summaryEntry.description}}</td>
 					<td>{{summaryEntry.date}}</td>
 				</tr>
 			</table>

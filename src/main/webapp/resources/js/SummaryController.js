@@ -40,10 +40,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 	    						summaryEntry.amount = list[i][j].amount;
 	    						summaryEntry.group = "Automobile";
+	    						summaryEntry.description = list[i][j].description;
 	    						summaryEntry.date = list[i][j].automobileDate;
 	    						console.log(summaryEntry);
 	    						$rootScope.summaryEntries.push(summaryEntry);
@@ -52,10 +54,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Entertainment";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].entertainmentDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
@@ -64,10 +68,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Food";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].foodDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
@@ -76,10 +82,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "HealthAndFitness";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].healthAndFitnessDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
@@ -88,10 +96,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}	
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Income";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].incomeDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
@@ -100,10 +110,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Miscellaneous";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].miscellaneousDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
@@ -112,10 +124,12 @@ app.controller("SummaryController",
 			    				var summaryEntry = {
 			    						amount: null,
 			    						group: null,
+			    						description: null,
 			    						date: null
 			    				}
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "RentAndUtility";
+	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].rentAndUtilityDate;
 								console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
