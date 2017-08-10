@@ -1,5 +1,5 @@
 app.controller("NavbarController", 
-	['$scope', '$http', '$rootScope', '$cookies', '$state',
+	['$scope', '$http', '$rootScope', '$cookies', '$state', '$timeout',
 		function($scope, $http, $rootScope, $cookies, $state) {
 		
 			$rootScope.username = $cookies.get('user');
@@ -17,6 +17,7 @@ app.controller("NavbarController",
 			    	  data: userGet
 			    	}).then(function successCallback(response) {
 			    		$rootScope.user = response.data;
+			    		$state.go("summary");
 			    	  }, function errorCallback(response) {
 			    		  console.log("error");
 			    	  });

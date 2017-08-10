@@ -1,8 +1,8 @@
 app.controller("LoginController", 
 	['$scope', '$http', '$rootScope', '$state', '$rootScope', '$cookies',
 		function($scope, $http, $rootScope, $state, $rootScope, $cookies) {
-			if($rootScope.user != null || $rootScope.username != null)
-				$state.go("summary");
+			/*if($rootScope.user != null || $rootScope.username != null){}
+				$state.go("summary");*/
 			$scope.login = function() {
 				console.log("login");
 				var userLogin = {
@@ -29,6 +29,7 @@ app.controller("LoginController",
 							expires: oneMonth
 						});
 						$state.go("summary");
+						$rootScope.getAllFinances();
 					}
 					else
 						$scope.loginInfoIncorrect = true;

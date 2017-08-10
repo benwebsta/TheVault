@@ -4,7 +4,7 @@ app.controller("SummaryController",
 		$rootScope.showSummaryTable = false;
 		$scope.allSelected = false;
 		
-		$scope.getAllFinances = function(){
+		$rootScope.getAllFinances = function(){
 			console.log("in get all finances");
 			$http({
 	    	  method: 'POST',
@@ -400,6 +400,8 @@ app.controller("SummaryController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		
+		$rootScope.getAllFinances();
 		  
 	}]);
 	
