@@ -1,8 +1,9 @@
 app.controller("SummaryController", 
-	['$scope', '$http', '$rootScope',
-		function($scope, $http, $rootScope) {
+	['$scope', '$http', '$rootScope', '$timeout',
+		function($scope, $http, $rootScope, $timeout) {
 		$rootScope.showSummaryTable = false;
-		$scope.allSelected = false;
+		$rootScope.allSelected = false;
+		console.log("all selected false");
 		
 		$rootScope.getAllFinances = function(){
 			console.log("in get all finances");
@@ -29,7 +30,7 @@ app.controller("SummaryController",
 	    						summaryEntry.group = "Automobile";
 	    						summaryEntry.description = list[i][j].description;
 	    						summaryEntry.date = list[i][j].automobileDate;
-	    						console.log(summaryEntry);
+	    						//console.log(summaryEntry);
 	    						$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				case 1: 
@@ -43,7 +44,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Entertainment";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].entertainmentDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 								break;
 	    				case 2: 
@@ -57,7 +58,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Food";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].foodDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				case 3: 
@@ -71,7 +72,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "HealthAndFitness";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].healthAndFitnessDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				case 4: 
@@ -85,7 +86,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Income";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].incomeDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				case 5: 
@@ -99,7 +100,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Miscellaneous";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].miscellaneousDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				case 6: 
@@ -113,7 +114,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "RentAndUtility";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].rentAndUtilityDate;
-								console.log(summaryEntry);
+								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
 	    				}
@@ -127,9 +128,10 @@ app.controller("SummaryController",
 	    		$rootScope.showSummaryTable = true;
 	    		
 	    		console.log("success callback");
-				
+				console.log("all selected result: " + $rootScope.allSelected);
 	    	   
-				if($scope.allSelected == false){
+				if($rootScope.allSelected == false){
+					console.log("in all selected false");
 		    		if(new Date() > new Date("12-31-2016") && new Date() <= new Date("01-31-2017")){
 		    			$rootScope.selectedMonth = "January";
 		    			$scope.january();
@@ -178,6 +180,10 @@ app.controller("SummaryController",
 		    			$rootScope.selectedMonth = "December";
 		    			$scope.december();
 		    		}
+				}
+				else{
+					console.log("in select all else");
+					display($rootScope.summaryArray);
 				}
 				
 	    	  }, function errorCallback(response) {
@@ -287,10 +293,10 @@ app.controller("SummaryController",
 		}
 		
 		$scope.all = function(){
-			$scope.allSelected = true;
+			console.log("all");
+			$rootScope.allSelected = true;
 			$rootScope.selectedMonth = "All Months";
 			$scope.getAllFinances();
-			display($rootScope.summaryArray);
 		}
 		$scope.january = function(){
 			var january = monthFilter($rootScope.summaryArray, function(summary) {
@@ -342,6 +348,7 @@ app.controller("SummaryController",
 			    return new Date(summary.date) > new Date("05-31-2017") &&
 				new Date(summary.date) <= new Date("06-30-2017");
 			});
+			console.log("june");
 			$rootScope.summaryEntries = june;
 			display(june);
 			$rootScope.selectedMonth = "June";
@@ -360,6 +367,7 @@ app.controller("SummaryController",
 			    return new Date(summary.date) > new Date("07-31-2017") &&
 				new Date(summary.date) <= new Date("08-31-2017");
 			});
+			console.log("august");
 			$rootScope.summaryEntries = august;
 			display(august);
 			$rootScope.selectedMonth = "August";
@@ -400,8 +408,6 @@ app.controller("SummaryController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
-		
-		$rootScope.getAllFinances();
 		  
 	}]);
 	

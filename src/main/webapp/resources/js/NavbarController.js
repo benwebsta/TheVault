@@ -1,6 +1,6 @@
 app.controller("NavbarController", 
 	['$scope', '$http', '$rootScope', '$cookies', '$state', '$timeout',
-		function($scope, $http, $rootScope, $cookies, $state) {
+		function($scope, $http, $rootScope, $cookies, $state, $timeout) {
 		
 			$rootScope.username = $cookies.get('user');
 			console.log("user cookie: " + $cookies.get('user'))
@@ -18,9 +18,14 @@ app.controller("NavbarController",
 			    	}).then(function successCallback(response) {
 			    		$rootScope.user = response.data;
 			    		$state.go("summary");
+			    		$timeout(getFin, 4000);
 			    	  }, function errorCallback(response) {
 			    		  console.log("error");
 			    	  });
+			}
+			
+			var getFin = function(){
+	    		$rootScope.getAllFinances();
 			}
 			
 			$scope.logout = function(){
