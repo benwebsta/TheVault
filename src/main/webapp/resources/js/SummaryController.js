@@ -2,6 +2,7 @@ app.controller("SummaryController",
 	['$scope', '$http', '$rootScope',
 		function($scope, $http, $rootScope) {
 		$rootScope.showSummaryTable = false;
+		$scope.allSelected = false;
 		
 		$scope.getAllFinances = function(){
 			console.log("in get all finances");

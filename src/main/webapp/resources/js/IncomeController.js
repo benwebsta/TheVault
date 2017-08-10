@@ -25,51 +25,51 @@ app.controller("IncomeController",
 				//display(responseArray);
 				
 				if($scope.allSelected == false){
-		    		if(new Date() > new Date("12-31-2016") && new Date() < new Date("01-31-2017")){
+		    		if(new Date() > new Date("12-31-2016") && new Date() <= new Date("01-31-2017")){
 		    			$rootScope.selectedMonth = "January";
 		    			$scope.january();
 		    		}
-		    		else if(new Date() > new Date("01-31-2017") && new Date() < new Date("02-28-2017")){
+		    		else if(new Date() > new Date("01-31-2017") && new Date() <= new Date("02-28-2017")){
 		    			$rootScope.selectedMonth = "February";
 		    			$scope.february();
 		    		}
-		    		else if(new Date() > new Date("02-28-2017") && new Date() < new Date("03-31-2017")){
+		    		else if(new Date() > new Date("02-28-2017") && new Date() <= new Date("03-31-2017")){
 		    			$rootScope.selectedMonth = "March";
 		    			$scope.march();
 		    		}
-		    		else if(new Date() > new Date("03-31-2017") && new Date() < new Date("04-30-2017")){
+		    		else if(new Date() > new Date("03-31-2017") && new Date() <= new Date("04-30-2017")){
 		    			$rootScope.selectedMonth = "April";
 		    			$scope.april();
 		    		}
-		    		else if(new Date() > new Date("04-30-2017") && new Date() < new Date("05-31-2017")){
+		    		else if(new Date() > new Date("04-30-2017") && new Date() <= new Date("05-31-2017")){
 		    			$rootScope.selectedMonth = "May";
 		    			$scope.may();
 		    		}
-		    		else if(new Date() > new Date("05-31-2016") && new Date() < new Date("06-30-2017")){
+		    		else if(new Date() > new Date("05-31-2016") && new Date() <= new Date("06-30-2017")){
 		    			$rootScope.selectedMonth = "June";
 		    			$scope.june();
 		    		}
-		    		else if(new Date() > new Date("06-30-2017") && new Date() < new Date("07-31-2017")){
+		    		else if(new Date() > new Date("06-30-2017") && new Date() <= new Date("07-31-2017")){
 		    			$rootScope.selectedMonth = "July";
 		    			$scope.july();
 		    		}
-		    		else if(new Date() > new Date("07-31-2016") && new Date() < new Date("08-31-2017")){
+		    		else if(new Date() > new Date("07-31-2016") && new Date() <= new Date("08-31-2017")){
 		    			$rootScope.selectedMonth = "August";
 		    			$scope.august();
 		    		}
-		    		else if(new Date() > new Date("08-31-2016") && new Date() < new Date("09-30-2017")){
+		    		else if(new Date() > new Date("08-31-2016") && new Date() <= new Date("09-30-2017")){
 		    			$rootScope.selectedMonth = "September";
 		    			$scope.september();
 		    		}
-		    		else if(new Date() > new Date("09-30-2016") && new Date() < new Date("10-31-2017")){
+		    		else if(new Date() > new Date("09-30-2016") && new Date() <= new Date("10-31-2017")){
 		    			$rootScope.selectedMonth = "October";
 		    			$scope.october();
 		    		}
-		    		else if(new Date() > new Date("10-31-2016") && new Date() < new Date("11-30-2017")){
+		    		else if(new Date() > new Date("10-31-2016") && new Date() <= new Date("11-30-2017")){
 		    			$rootScope.selectedMonth = "November";
 		    			$scope.november();
 		    		}
-		    		else if(new Date() > new Date("11-30-2016") && new Date() < new Date("12-31-2017")){
+		    		else if(new Date() > new Date("11-30-2016") && new Date() <= new Date("12-31-2017")){
 		    			$rootScope.selectedMonth = "December";
 		    			$scope.december();
 		    		}
@@ -117,12 +117,12 @@ app.controller("IncomeController",
 		
 		var sortDatesAsc = function(date1, date2){
 			if(new Date(date1.incomeDate).getTime() > new Date(date2.incomeDate).getTime())	return 1;
-			if (new Date(date1.incomeDate).getTime() < new Date(date2.incomeDate).getTime()) return -1;
+			if (new Date(date1.incomeDate).getTime() <= new Date(date2.incomeDate).getTime()) return -1;
 			return 0;
 		}
 		var sortDatesDesc = function(date1, date2){
 			if(new Date(date1.incomeDate).getTime() > new Date(date2.incomeDate).getTime()) return -1;
-			if (new Date(date1.incomeDate).getTime() < new Date(date2.incomeDate).getTime()) return 1;
+			if (new Date(date1.incomeDate).getTime() <= new Date(date2.incomeDate).getTime()) return 1;
 			return 0;
 		}
 		var display = function(responseArray){
@@ -142,23 +142,24 @@ app.controller("IncomeController",
 			}
 		}
 		function monthFilter(array, test){
-			var januaryArray = new Array();
+			var newArray = new Array();
 			for(i = 0; i < array.length; i++){
 				if(test(array[i]))
-					januaryArray.push(array[i]);
+					newArray.push(array[i]);
 			}
-			return januaryArray;
+			return newArray;
 		}
 		  
 		$scope.all = function(){
 			$scope.allSelected = true;
+			$rootScope.selectedMonth = "All Months";
 			$scope.getAllIncomes();
 			display($rootScope.incomeArray);
 		}
 		$scope.january = function(){
 			var january = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("12-31-2016") &&
-				new Date(income.incomeDate) < new Date("01-31-2017");
+				new Date(income.incomeDate) <= new Date("01-31-2017");
 			});
 			$rootScope.incomeEntries = january;
 			display(january);
@@ -167,7 +168,7 @@ app.controller("IncomeController",
 		$scope.february = function(){
 			var february = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("01-31-2017") &&
-				new Date(income.incomeDate) < new Date("02-28-2017");
+				new Date(income.incomeDate) <= new Date("02-28-2017");
 			});
 			$rootScope.incomeEntries = february;
 			display(february);
@@ -176,7 +177,7 @@ app.controller("IncomeController",
 		$scope.march = function(){
 			var march = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("02-28-2017") &&
-				new Date(income.incomeDate) < new Date("03-31-2017");
+				new Date(income.incomeDate) <= new Date("03-31-2017");
 			});
 			$rootScope.incomeEntries = march;
 			display(march);
@@ -185,7 +186,7 @@ app.controller("IncomeController",
 		$scope.april = function(){
 			var april = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("03-31-2017") &&
-				new Date(income.incomeDate) < new Date("04-30-2017");
+				new Date(income.incomeDate) <= new Date("04-30-2017");
 			});
 			$rootScope.incomeEntries = april;
 			display(april);
@@ -194,7 +195,7 @@ app.controller("IncomeController",
 		$scope.may = function(){
 			var may = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("04-30-2017") &&
-				new Date(income.incomeDate) < new Date("05-31-2017");
+				new Date(income.incomeDate) <= new Date("05-31-2017");
 			});
 			$rootScope.incomeEntries = may;
 			display(may);
@@ -203,7 +204,7 @@ app.controller("IncomeController",
 		$scope.june = function(){
 			var june = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("05-31-2017") &&
-				new Date(income.incomeDate) < new Date("06-30-2017");
+				new Date(income.incomeDate) <= new Date("06-30-2017");
 			});
 			$rootScope.incomeEntries = june;
 			display(june);
@@ -212,7 +213,7 @@ app.controller("IncomeController",
 		$scope.july = function(){
 			var july = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("06-30-2017") &&
-				new Date(income.incomeDate) < new Date("07-31-2017");
+				new Date(income.incomeDate) <= new Date("07-31-2017");
 			});
 			$rootScope.incomeEntries = july;
 			display(july);
@@ -221,7 +222,7 @@ app.controller("IncomeController",
 		$scope.august = function(){
 			var august = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("07-31-2017") &&
-				new Date(income.incomeDate) < new Date("08-31-2017");
+				new Date(income.incomeDate) <= new Date("08-31-2017");
 			});
 			$rootScope.incomeEntries = august;
 			display(august);
@@ -230,7 +231,7 @@ app.controller("IncomeController",
 		$scope.september = function(){
 			var september = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("08-31-2017") &&
-				new Date(income.incomeDate) < new Date("09-30-2017");
+				new Date(income.incomeDate) <= new Date("09-30-2017");
 			});
 			$rootScope.incomeEntries = september;
 			display(september);
@@ -239,7 +240,7 @@ app.controller("IncomeController",
 		$scope.october = function(){
 			var october = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("09-30-2017") &&
-				new Date(income.incomeDate) < new Date("10-31-2017");
+				new Date(income.incomeDate) <= new Date("10-31-2017");
 			});
 			$rootScope.incomeEntries = october;
 			display(october);
@@ -248,7 +249,7 @@ app.controller("IncomeController",
 		$scope.november = function(){
 			var november = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("10-31-2017") &&
-				new Date(income.incomeDate) < new Date("11-30-2017");
+				new Date(income.incomeDate) <= new Date("11-30-2017");
 			});
 			$rootScope.incomeEntries = november;
 			display(november);
@@ -257,7 +258,7 @@ app.controller("IncomeController",
 		$scope.december = function(){
 			var december = monthFilter($rootScope.incomeArray, function(income) {
 			    return new Date(income.incomeDate) > new Date("11-30-2017") &&
-				new Date(income.incomeDate) < new Date("12-31-2017");
+				new Date(income.incomeDate) <= new Date("12-31-2017");
 			});
 			$rootScope.incomeEntries = december;
 			display(december);
