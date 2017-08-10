@@ -17,6 +17,25 @@
 			</div>
 		</div>
 		<div class="five">
+			<div class="dropdown" ng-cloak ng-show="showSummaryTable == true">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
+				<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+				    <li ng-click="all()"><a>All Months</a></li>
+				    <li ng-click="january()"><a>January</a></li> 
+				    <li ng-click="february	()"><a>February</a></li>
+				    <li ng-click="march()"><a>March</a></li>
+					<li ng-click="april()"><a>April</a></li>
+					<li ng-click="may()"><a>May</a></li>
+					<li ng-click="june()"><a>June</a></li>
+					<li ng-click="july()"><a>July</a></li>
+					<li ng-click="august()"><a>August</a></li>
+					<li ng-click="september()"><a>September</a></li>
+					<li ng-click="october()"><a>October</a></li>
+					<li ng-click="november()"><a>November</a></li>
+					<li ng-click="december()"><a>December</a></li>   
+				</ul>
+			</div><br>
 			<table ng-cloak ng-show="showSummaryTable == true">
 				<tr>
 					<th>Amount</th>
