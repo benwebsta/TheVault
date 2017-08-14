@@ -18,7 +18,7 @@ app.controller("NavbarController",
 			    	}).then(function successCallback(response) {
 			    		$rootScope.user = response.data;
 			    		$state.go("summary");
-			    		$timeout(getFin, 4000);
+			    		$timeout(getFin, 1000);
 			    	  }, function errorCallback(response) {
 			    		  console.log("error");
 			    	  });

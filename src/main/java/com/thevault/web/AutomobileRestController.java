@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.thevault.beans.Automobile;
+import com.thevault.beans.Income;
 import com.thevault.beans.User;
 import com.thevault.service.AutomobileService;
 
@@ -50,5 +51,19 @@ public class AutomobileRestController {
 		List<Automobile> automobiles = automobileService.getAutomobilesByUser(user);
 		System.out.println(automobiles);
 		return automobiles;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteAutomobile")
+	public @ResponseBody boolean deleteAutomobile_JSON(@RequestBody String automobileJSON){
+		System.out.println("POST delete automobile rest controller hit");
+		System.out.println("JSON: " + automobileJSON);
+		
+		Gson gson = new Gson();
+		Automobile automobile = gson.fromJson(automobileJSON, Automobile.class);		
+		
+		System.out.println("automobile: " + automobile);
+		boolean result = automobileService.deleteAutomobile(automobile);
+		System.out.println(result);
+		return result;
 	}
 }

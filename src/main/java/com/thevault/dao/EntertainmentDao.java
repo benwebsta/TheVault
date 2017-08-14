@@ -8,4 +8,5 @@ import com.thevault.beans.User;
 public interface EntertainmentDao {
 	public List<Entertainment> getEntertainmentsByUser(User user);
 	public Entertainment createEntertainment(Entertainment entertainment);
+	public boolean deleteEntertainment(Entertainment entertainment);
 }

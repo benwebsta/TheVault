@@ -23,4 +23,9 @@ public class EntertainmentService {
 		System.out.println("creating entertainment: " + entertainment);
 		return entertainmentDao.createEntertainment(entertainment);
 	}
+	public boolean deleteEntertainment(Entertainment entertainment){
+		System.out.println("in deleteEntertainment service");
+		System.out.println("deleting entertainment: \n" + entertainment);
+		return entertainmentDao.deleteEntertainment(entertainment);
+	}
 }

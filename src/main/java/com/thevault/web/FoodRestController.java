@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.thevault.beans.Food;
+import com.thevault.beans.RentAndUtility;
 import com.thevault.beans.User;
 import com.thevault.service.FoodService;
 
@@ -50,5 +51,19 @@ public class FoodRestController {
 		List<Food> foods = foodService.getFoodsByUser(user);
 		System.out.println(foods);
 		return foods;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteFood")
+	public @ResponseBody boolean deleteFood_JSON(@RequestBody String foodJSON){
+		System.out.println("POST delete food rest controller hit");
+		System.out.println("JSON: " + foodJSON);
+		
+		Gson gson = new Gson();
+		Food food = gson.fromJson(foodJSON, Food.class);		
+		
+		System.out.println("food: " + food);
+		boolean result = foodService.deleteFood(food);
+		System.out.println(result);
+		return result;
 	}
 }

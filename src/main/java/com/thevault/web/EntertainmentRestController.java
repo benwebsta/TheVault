@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.thevault.beans.Automobile;
 import com.thevault.beans.Entertainment;
 import com.thevault.beans.User;
 import com.thevault.service.EntertainmentService;
@@ -50,6 +51,20 @@ public class EntertainmentRestController {
 		List<Entertainment> entertainments = entertainmentService.getEntertainmentsByUser(user);
 		System.out.println(entertainments);
 		return entertainments;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteEntertainment")
+	public @ResponseBody boolean deleteEntertainment_JSON(@RequestBody String entertainmentJSON){
+		System.out.println("POST delete entertainment rest controller hit");
+		System.out.println("JSON: " + entertainmentJSON);
+		
+		Gson gson = new Gson();
+		Entertainment entertainment = gson.fromJson(entertainmentJSON, Entertainment.class);		
+		
+		System.out.println("entertainment: " + entertainment);
+		boolean result = entertainmentService.deleteEntertainment(entertainment);
+		System.out.println(result);
+		return result;
 	}
 
 }

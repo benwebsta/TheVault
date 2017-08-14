@@ -60,4 +60,31 @@ public class FoodDaoImpl implements FoodDao{
 		 }
 	}
 
+	public boolean deleteFood(Food food) {
+		System.out.println("in dao delete food");
+		System.out.println(food);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(food);
+		     food.setUser(null);
+			 sess.delete(food);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
+
 }

@@ -23,4 +23,9 @@ public class AutomobileService {
 		System.out.println("creating automobile: " + automobile);
 		return automobileDao.createAutomobile(automobile);
 	}
+	public boolean deleteAutomobile(Automobile automobile){
+		System.out.println("in deleteAutomobile service");
+		System.out.println("deleting automobile: \n" + automobile);
+		return automobileDao.deleteAutomobile(automobile);
+	}
 }

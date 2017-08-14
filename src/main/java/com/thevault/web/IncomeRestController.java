@@ -52,4 +52,18 @@ public class IncomeRestController {
 		return incomes;
 	}
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteIncome")
+	public @ResponseBody boolean deleteIncome_JSON(@RequestBody String incomeJSON){
+		System.out.println("POST delete income rest controller hit");
+		System.out.println("JSON: " + incomeJSON);
+		
+		Gson gson = new Gson();
+		Income income = gson.fromJson(incomeJSON, Income.class);		
+		
+		System.out.println("income: " + income);
+		boolean result = incomeService.deleteIncome(income);
+		System.out.println(result);
+		return result;
+	}
+	
 }

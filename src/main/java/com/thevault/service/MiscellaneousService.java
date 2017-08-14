@@ -23,4 +23,9 @@ public class MiscellaneousService {
 		System.out.println("creating miscellaneous: " + miscellaneous);
 		return miscellaneousDao.createMiscellaneous(miscellaneous);
 	}
+	public boolean deleteMiscellaneous(Miscellaneous miscellaneous){
+		System.out.println("in deleteMiscellaneous service");
+		System.out.println("deleting miscellaneous: \n" + miscellaneous);
+		return miscellaneousDao.deleteMiscellaneous(miscellaneous);
+	}
 }

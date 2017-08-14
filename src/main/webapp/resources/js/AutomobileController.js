@@ -264,5 +264,28 @@ app.controller("AutomobileController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteAutomobileEntry = function(automobileEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteAutomobileEntry(automobileEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteAutomobileEntry = function(automobileEntry){
+			console.log("in delete and automobile entry is: \n");
+			console.log(automobileEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteAutomobile',
+		    	  data: automobileEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllAutomobiles();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		
 	}]);

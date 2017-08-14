@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.thevault.beans.HealthAndFitness;
+import com.thevault.beans.Miscellaneous;
 import com.thevault.beans.User;
 import com.thevault.service.HealthAndFitnessService;
 
@@ -50,5 +51,19 @@ public class HealthAndFitnessRestController {
 		List<HealthAndFitness> healthAndFitnesses = healthAndFitnessService.getHealthAndFitnessesByUser(user);
 		System.out.println(healthAndFitnesses);
 		return healthAndFitnesses;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteHealthAndFitness")
+	public @ResponseBody boolean deleteHealthAndFitness_JSON(@RequestBody String healthAndFitnessJSON){
+		System.out.println("POST delete healthAndFitness rest controller hit");
+		System.out.println("JSON: " + healthAndFitnessJSON);
+		
+		Gson gson = new Gson();
+		HealthAndFitness healthAndFitness = gson.fromJson(healthAndFitnessJSON, HealthAndFitness.class);		
+		
+		System.out.println("healthAndFitness: " + healthAndFitness);
+		boolean result = healthAndFitnessService.deleteHealthAndFitness(healthAndFitness);
+		System.out.println(result);
+		return result;
 	}
 }

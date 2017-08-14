@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.thevault.beans.Entertainment;
 import com.thevault.beans.RentAndUtility;
 import com.thevault.beans.User;
 import com.thevault.service.RentAndUtilityService;
@@ -50,5 +51,19 @@ public class RentAndUtilityRestController {
 		List<RentAndUtility> rentAndUtilities = rentAndUtilityService.getRentAndUtilitiesByUser(user);
 		System.out.println(rentAndUtilities);
 		return rentAndUtilities;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteRentAndUtility")
+	public @ResponseBody boolean deleteRentAndUtility_JSON(@RequestBody String rentAndUtilityJSON){
+		System.out.println("POST delete rentAndUtility rest controller hit");
+		System.out.println("JSON: " + rentAndUtilityJSON);
+		
+		Gson gson = new Gson();
+		RentAndUtility rentAndUtility = gson.fromJson(rentAndUtilityJSON, RentAndUtility.class);		
+		
+		System.out.println("rentAndUtility: " + rentAndUtility);
+		boolean result = rentAndUtilityService.deleteRentAndUtility(rentAndUtility);
+		System.out.println(result);
+		return result;
 	}
 }

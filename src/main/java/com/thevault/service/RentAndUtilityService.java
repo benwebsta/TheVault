@@ -23,4 +23,9 @@ public class RentAndUtilityService {
 		System.out.println("creating rentAndUtility: " + rentAndUtility);
 		return rentAndUtilityDao.createRentAndUtility(rentAndUtility);
 	}
+	public boolean deleteRentAndUtility(RentAndUtility rentAndUtility){
+		System.out.println("in deleteRentAndUtility service");
+		System.out.println("deleting rentAndUtility: \n" + rentAndUtility);
+		return rentAndUtilityDao.deleteRentAndUtility(rentAndUtility);
+	}
 }

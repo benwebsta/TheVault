@@ -264,4 +264,27 @@ app.controller("IncomeController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteIncomeEntry = function(incomeEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteIncomeEntry(incomeEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteIncomeEntry = function(incomeEntry){
+			console.log("in delete and income entry is: \n");
+			console.log(incomeEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteIncome',
+		    	  data: incomeEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllIncomes();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 	}]);

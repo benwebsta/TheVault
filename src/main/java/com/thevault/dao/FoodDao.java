@@ -8,4 +8,5 @@ import com.thevault.beans.User;
 public interface FoodDao {
 	public List<Food> getFoodsByUser(User user);
 	public Food createFood(Food food);
+	public boolean deleteFood(Food food);
 }

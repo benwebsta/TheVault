@@ -58,5 +58,31 @@ public class IncomeDaoImpl implements IncomeDao{
 		     sess.close();
 		 }
 	}
+	public boolean deleteIncome(Income income) {
+		System.out.println("in dao delete income");
+		System.out.println(income);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(income);
+		     income.setUser(null);
+			 sess.delete(income);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
 	
 }

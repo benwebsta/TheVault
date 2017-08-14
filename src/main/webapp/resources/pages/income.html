@@ -41,17 +41,21 @@
 					<th>Amount</th>
 					<th>Description</th>
 					<th>Date</th>
+					<th ng-show="delete == true">Delete</th>
 				</tr>
 				<tr ng-repeat="incomeEntry in incomeEntries">
 					<td>{{incomeEntry.amount}}</td>
 					<td>{{incomeEntry.description}}</td>
 					<td>{{incomeEntry.incomeDate}}</td>
+					<td ng-click="deleteIncomeEntry(incomeEntry)" ng-show="delete == true" class="delete-row-entry">
+						<span class="glyphicon glyphicon-remove delete-button" aria-hidden="true"></span>
+					</td>
 				</tr>
 			</table>
 		</div>
 		<div class="six">
-			<div class="chartDiv">
-				<canvas id="pie" class="chart chart-pie myChart" chart-data="incomeData" chart-labels="incomeLabels" chart-options="options"></canvas> 
+			<div ng-show="showIncomeTable == true">
+				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
 			</div>
 		</div>
 	</div>

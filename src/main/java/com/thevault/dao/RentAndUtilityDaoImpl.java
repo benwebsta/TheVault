@@ -60,4 +60,31 @@ public class RentAndUtilityDaoImpl implements RentAndUtilityDao{
 		 }
 	}
 
+	public boolean deleteRentAndUtility(RentAndUtility rentAndUtility) {
+		System.out.println("in dao delete entertainment");
+		System.out.println(rentAndUtility);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(rentAndUtility);
+		     rentAndUtility.setUser(null);
+			 sess.delete(rentAndUtility);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
+
 }

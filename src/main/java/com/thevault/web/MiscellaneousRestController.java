@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.thevault.beans.Food;
 import com.thevault.beans.Miscellaneous;
 import com.thevault.beans.User;
 import com.thevault.service.MiscellaneousService;
@@ -50,5 +51,19 @@ public class MiscellaneousRestController {
 		List<Miscellaneous> miscellaneouses = miscellaneousService.getMiscellaneousesByUser(user);
 		System.out.println(miscellaneouses);
 		return miscellaneouses;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/deleteMiscellaneous")
+	public @ResponseBody boolean deleteMiscellaneous_JSON(@RequestBody String miscellaneousJSON){
+		System.out.println("POST delete miscellaneous rest controller hit");
+		System.out.println("JSON: " + miscellaneousJSON);
+		
+		Gson gson = new Gson();
+		Miscellaneous miscellaneous = gson.fromJson(miscellaneousJSON, Miscellaneous.class);		
+		
+		System.out.println("miscellaneous: " + miscellaneous);
+		boolean result = miscellaneousService.deleteMiscellaneous(miscellaneous);
+		System.out.println(result);
+		return result;
 	}
 }

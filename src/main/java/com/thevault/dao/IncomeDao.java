@@ -9,4 +9,5 @@ public interface IncomeDao {
 
 	public List<Income> getIncomesByUser(User user);
 	public Income createIncome(Income income);
+	public boolean deleteIncome(Income income);
 }

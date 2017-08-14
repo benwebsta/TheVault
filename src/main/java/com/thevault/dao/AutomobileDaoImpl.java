@@ -60,4 +60,31 @@ public class AutomobileDaoImpl implements AutomobileDao{
 		 }
 	}
 
+	public boolean deleteAutomobile(Automobile automobile) {
+		System.out.println("in dao delete automobile");
+		System.out.println(automobile);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(automobile);
+		     automobile.setUser(null);
+			 sess.delete(automobile);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
+
 }

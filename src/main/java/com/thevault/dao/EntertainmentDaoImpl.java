@@ -60,4 +60,31 @@ public class EntertainmentDaoImpl implements EntertainmentDao{
 		 }
 	}
 
+	public boolean deleteEntertainment(Entertainment entertainment) {
+		System.out.println("in dao delete entertainment");
+		System.out.println(entertainment);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(entertainment);
+		     entertainment.setUser(null);
+			 sess.delete(entertainment);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
+
 }

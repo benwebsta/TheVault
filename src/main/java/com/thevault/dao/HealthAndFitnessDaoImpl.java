@@ -60,4 +60,31 @@ public class HealthAndFitnessDaoImpl implements HealthAndFitnessDao{
 		 }
 	}
 
+	public boolean deleteHealthAndFitness(HealthAndFitness healthAndFitness) {
+		System.out.println("in dao delete entertainment");
+		System.out.println(healthAndFitness);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(healthAndFitness);
+		     healthAndFitness.setUser(null);
+			 sess.delete(healthAndFitness);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return true;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return false;
+		 }
+		 finally {
+		     sess.close();
+		 }
+	}
+
 }

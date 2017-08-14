@@ -23,4 +23,9 @@ public class FoodService {
 		System.out.println("creating food: " + food);
 		return foodDao.createFood(food);
 	}
+	public boolean deleteFood(Food food){
+		System.out.println("in deleteFood service");
+		System.out.println("deleting food: \n" + food);
+		return foodDao.deleteFood(food);
+	}
 }

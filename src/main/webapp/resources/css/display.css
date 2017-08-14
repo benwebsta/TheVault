@@ -45,3 +45,12 @@ table {
 table, th, td {
     border: 1px solid black;
 }
+.delete-button{
+	display:block; 
+	text-align:center; 
+	margin:0 auto;
+	color: red;
+}
+.delete-row-entry{
+	cursor: pointer;
+}

@@ -23,4 +23,9 @@ public class HealthAndFitnessService {
 		System.out.println("creating healthAndFitness: " + healthAndFitness);
 		return healthAndFitnessDao.createHealthAndFitness(healthAndFitness);
 	}
+	public boolean deleteHealthAndFitness(HealthAndFitness healthAndFitness){
+		System.out.println("in deleteHealthAndFitness service");
+		System.out.println("deleting healthAndFitness: \n" + healthAndFitness);
+		return healthAndFitnessDao.deleteHealthAndFitness(healthAndFitness);
+	}
 }

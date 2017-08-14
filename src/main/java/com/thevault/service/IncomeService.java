@@ -23,4 +23,10 @@ public class IncomeService {
 		System.out.println("creating income: " + income);
 		return incomeDao.createIncome(income);
 	}
+	
+	public boolean deleteIncome(Income income){
+		System.out.println("In deleteIncome service");
+		System.out.println("deleting income: \n" + income);
+		return incomeDao.deleteIncome(income);
+	}
 }
