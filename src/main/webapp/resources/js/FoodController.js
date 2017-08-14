@@ -265,5 +265,28 @@ app.controller("FoodController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteFoodEntry = function(foodEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteFoodEntry(foodEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteFoodEntry = function(foodEntry){
+			console.log("in delete food entry is: \n");
+			console.log(foodEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteFood',
+		    	  data: foodEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllFoods();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		  
 	}]);
