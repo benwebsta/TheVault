@@ -272,7 +272,7 @@ app.controller("IncomeController",
 			}
 		}
 		$scope.reallyDeleteIncomeEntry = function(incomeEntry){
-			console.log("in delete and income entry is: \n");
+			console.log("in delete income entry is: \n");
 			console.log(incomeEntry);
 			$http({
 		    	  method: 'DELETE',

@@ -266,5 +266,28 @@ app.controller("EntertainmentController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteEntertainmentEntry = function(entertainmentEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteEntertainmentEntry(entertainmentEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteEntertainmentEntry = function(entertainmentEntry){
+			console.log("in delete entertainment entry is: \n");
+			console.log(entertainmentEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteEntertainment',
+		    	  data: entertainmentEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllEntertainments();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		  
 	}]);
