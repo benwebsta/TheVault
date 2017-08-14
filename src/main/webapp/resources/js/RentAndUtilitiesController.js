@@ -265,5 +265,28 @@ app.controller("RentAndUtilitiesController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteRentAndUtilitiesEntry = function(rentAndUtilityEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteRentAndUtilitiesEntry(rentAndUtilityEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteRentAndUtilitiesEntry = function(rentAndUtilityEntry){
+			console.log("in delete rentAndUtility entry is: \n");
+			console.log(rentAndUtilityEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteRentAndUtility',
+		    	  data: rentAndUtilityEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllRentAndUtilities();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		  
 	}]);

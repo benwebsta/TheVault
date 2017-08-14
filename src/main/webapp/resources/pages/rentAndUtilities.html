@@ -41,17 +41,21 @@
 					<th>Amount</th>
 					<th>Description</th>
 					<th>Date</th>
+					<th ng-show="delete == true">Delete</th>
 				</tr>
 				<tr ng-repeat="rentAndUtilitiesEntry in rentAndUtilitiesEntries">
 					<td>{{rentAndUtilitiesEntry.amount}}</td>
 					<td>{{rentAndUtilitiesEntry.description}}</td>
 					<td>{{rentAndUtilitiesEntry.rentAndUtilityDate}}</td>
+					<td ng-click="deleteRentAndUtilitiesEntry(rentAndUtilitiesEntry)" ng-show="delete == true" class="delete-row-entry">
+						<span class="glyphicon glyphicon-remove delete-button" aria-hidden="true"></span>
+					</td>
 				</tr>
 			</table>
 		</div>
 		<div class="six">
-			<div class="chartDiv">
-				<canvas id="pie" class="chart chart-pie myChart" chart-data="rentAndUtilitiesData" chart-labels="rentAndUtilitiesLabels" chart-options="options"></canvas> 
+			<div ng-show="showRentAndUtilitiesTable == true">
+				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
 			</div>
 		</div>
 	</div>
