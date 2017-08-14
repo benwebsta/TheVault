@@ -28,4 +28,9 @@ public class HealthAndFitnessService {
 		System.out.println("deleting healthAndFitness: \n" + healthAndFitness);
 		return healthAndFitnessDao.deleteHealthAndFitness(healthAndFitness);
 	}
+	public HealthAndFitness getHealthAndFitnessById(int id){
+		System.out.println("in getHealthAndFitnessById service");
+		System.out.println("id: " + id);
+		return healthAndFitnessDao.getHealthAndFitnessById(id);
+	}
 }

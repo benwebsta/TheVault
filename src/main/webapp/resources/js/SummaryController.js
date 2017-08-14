@@ -26,6 +26,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].automobileId;
 	    						summaryEntry.amount = list[i][j].amount;
 	    						summaryEntry.group = "Automobile";
 	    						summaryEntry.description = list[i][j].description;
@@ -40,6 +41,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].entertainmentId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Entertainment";
 	    						summaryEntry.description = list[i][j].description;
@@ -54,6 +56,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].foodId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Food";
 	    						summaryEntry.description = list[i][j].description;
@@ -68,6 +71,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].healthAndFitnessId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "HealthAndFitness";
 	    						summaryEntry.description = list[i][j].description;
@@ -82,6 +86,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}	
+			    				summaryEntry.id = list[i][j].incomeId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Income";
 	    						summaryEntry.description = list[i][j].description;
@@ -96,6 +101,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].miscellaneousId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "Miscellaneous";
 	    						summaryEntry.description = list[i][j].description;
@@ -110,6 +116,7 @@ app.controller("SummaryController",
 			    						description: null,
 			    						date: null
 			    				}
+			    				summaryEntry.id = list[i][j].rentAndUtilityId;
 			    				summaryEntry.amount = list[i][j].amount;
 								summaryEntry.group = "RentAndUtility";
 	    						summaryEntry.description = list[i][j].description;
@@ -217,7 +224,7 @@ app.controller("SummaryController",
     		$rootScope.entertainmentTotal = 0;
     		$rootScope.foodTotal = 0;
     		$rootScope.healthAndFitnessTotal = 0;
-    		$rootScope.incomeTotal = 0;
+    		$rootScope.summaryTotal = 0;
     		$rootScope.miscellaneousTotal = 0;
     		$rootScope.rentAndUtilityTotal = 0;
 			
@@ -238,9 +245,9 @@ app.controller("SummaryController",
     				console.log("3");
     				$rootScope.healthAndFitnessTotal += summaryArray[x].amount;
     			}
-    			else if(summaryArray[x].group == "Income"){
+    			else if(summaryArray[x].group == "Summary"){
     				console.log("4");
-    				$rootScope.incomeTotal += summaryArray[x].amount;
+    				$rootScope.summaryTotal += summaryArray[x].amount;
     			}
     			else if(summaryArray[x].group == "Miscellaneous"){
     				console.log("5");
@@ -271,9 +278,9 @@ app.controller("SummaryController",
 			$rootScope.summaryLabels2.push("healthAndFitness");
 			$rootScope.summaryData2.push($rootScope.healthAndFitnessTotal);
 			$rootScope.summaryLabels.push("income");
-			$rootScope.summaryData.push($rootScope.incomeTotal);
+			$rootScope.summaryData.push($rootScope.summaryTotal);
 			$rootScope.summaryLabels2.push("income");
-			$rootScope.summaryData2.push($rootScope.incomeTotal);
+			$rootScope.summaryData2.push($rootScope.summaryTotal);
 			$rootScope.summaryLabels.push("miscellaneous");
 			$rootScope.summaryData.push($rootScope.miscellaneousTotal);
 			$rootScope.summaryLabels2.push("miscellaneous");
@@ -407,6 +414,30 @@ app.controller("SummaryController",
 			$rootScope.summaryEntries = december;
 			display(december);
 			$rootScope.selectedMonth = "December";
+		}
+		$scope.deleteSummaryEntry = function(summaryEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteSummaryEntry(summaryEntry);
+				console.log(summaryEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteSummaryEntry = function(summaryEntry){
+			console.log("in delete summary entry is: \n");
+			console.log(summaryEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteSummary',
+		    	  data: summaryEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllFinances();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
 		}
 		  
 	}]);

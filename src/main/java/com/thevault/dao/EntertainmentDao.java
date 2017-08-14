@@ -9,4 +9,5 @@ public interface EntertainmentDao {
 	public List<Entertainment> getEntertainmentsByUser(User user);
 	public Entertainment createEntertainment(Entertainment entertainment);
 	public boolean deleteEntertainment(Entertainment entertainment);
+	public Entertainment getEntertainmentById(int id);
 }

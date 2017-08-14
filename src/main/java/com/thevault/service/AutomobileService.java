@@ -28,4 +28,9 @@ public class AutomobileService {
 		System.out.println("deleting automobile: \n" + automobile);
 		return automobileDao.deleteAutomobile(automobile);
 	}
+	public Automobile getAutomobileById(int id){
+		System.out.println("In getAutomobileById service");
+		System.out.println("Id: " + id);
+		return automobileDao.getAutomobileById(id);
+	}
 }

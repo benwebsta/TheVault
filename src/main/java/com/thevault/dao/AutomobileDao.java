@@ -9,4 +9,5 @@ public interface AutomobileDao {
 	public List<Automobile> getAutomobilesByUser(User user);
 	public Automobile createAutomobile(Automobile automobile);
 	public boolean deleteAutomobile(Automobile automobile);
+	public Automobile getAutomobileById(int id);
 }

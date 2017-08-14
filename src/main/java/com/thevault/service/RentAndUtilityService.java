@@ -28,4 +28,9 @@ public class RentAndUtilityService {
 		System.out.println("deleting rentAndUtility: \n" + rentAndUtility);
 		return rentAndUtilityDao.deleteRentAndUtility(rentAndUtility);
 	}
+	public RentAndUtility getRentAndUtilityById(int id){
+		System.out.println("in getRentAndUtilityById service");
+		System.out.println("id: " + id);
+		return rentAndUtilityDao.getRentAndUtilityById(id);
+	}
 }

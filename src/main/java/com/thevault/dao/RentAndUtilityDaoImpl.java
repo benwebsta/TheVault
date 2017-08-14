@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.thevault.beans.Miscellaneous;
 import com.thevault.beans.RentAndUtility;
 import com.thevault.beans.User;
 import com.thevault.config.HibernateUtil;
@@ -85,6 +86,25 @@ public class RentAndUtilityDaoImpl implements RentAndUtilityDao{
 		 finally {
 		     sess.close();
 		 }
+	}
+
+	public RentAndUtility getRentAndUtilityById(int id) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		try {
+			tx = sess.beginTransaction();
+			RentAndUtility result = (RentAndUtility)sess.get(RentAndUtility.class, id);
+			tx.commit();
+			if(result != null)
+				return result;
+			else 
+				return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

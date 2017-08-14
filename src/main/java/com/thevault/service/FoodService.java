@@ -28,4 +28,9 @@ public class FoodService {
 		System.out.println("deleting food: \n" + food);
 		return foodDao.deleteFood(food);
 	}
+	public Food getFoodById(int id){
+		System.out.println("in getFoodById service");
+		System.out.println("id: " + id);
+		return foodDao.getFoodById(id);
+	}
 }

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.thevault.beans.HealthAndFitness;
 import com.thevault.beans.Income;
 import com.thevault.beans.User;
 import com.thevault.config.HibernateUtil;
@@ -83,6 +84,24 @@ public class IncomeDaoImpl implements IncomeDao{
 		 finally {
 		     sess.close();
 		 }
+	}
+	public Income getIncomeById(int id) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		try {
+			tx = sess.beginTransaction();
+			Income result = (Income)sess.get(Income.class, id);
+			tx.commit();
+			if(result != null)
+				return result;
+			else 
+				return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }

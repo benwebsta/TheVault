@@ -28,4 +28,9 @@ public class EntertainmentService {
 		System.out.println("deleting entertainment: \n" + entertainment);
 		return entertainmentDao.deleteEntertainment(entertainment);
 	}
+	public Entertainment getEntertainmentById(int id){
+		System.out.println("in getEntertainmentById service");
+		System.out.println("id: " + id);
+		return entertainmentDao.getEntertainmentById(id);
+	}
 }

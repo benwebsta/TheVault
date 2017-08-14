@@ -28,4 +28,9 @@ public class MiscellaneousService {
 		System.out.println("deleting miscellaneous: \n" + miscellaneous);
 		return miscellaneousDao.deleteMiscellaneous(miscellaneous);
 	}
+	public Miscellaneous getMiscellaneousById(int id){
+		System.out.println("in getMiscellaneousById service");
+		System.out.println("id: " + id);
+		return miscellaneousDao.getMiscellaneousById(id);
+	}
 }

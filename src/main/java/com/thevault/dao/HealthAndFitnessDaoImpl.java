@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.thevault.beans.Food;
 import com.thevault.beans.HealthAndFitness;
 import com.thevault.beans.User;
 import com.thevault.config.HibernateUtil;
@@ -85,6 +86,25 @@ public class HealthAndFitnessDaoImpl implements HealthAndFitnessDao{
 		 finally {
 		     sess.close();
 		 }
+	}
+
+	public HealthAndFitness getHealthAndFitnessById(int id) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		try {
+			tx = sess.beginTransaction();
+			HealthAndFitness result = (HealthAndFitness)sess.get(HealthAndFitness.class, id);
+			tx.commit();
+			if(result != null)
+				return result;
+			else 
+				return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

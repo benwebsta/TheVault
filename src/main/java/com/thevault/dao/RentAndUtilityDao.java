@@ -9,4 +9,5 @@ public interface RentAndUtilityDao {
 	public List<RentAndUtility> getRentAndUtilitiesByUser (User user);
 	public RentAndUtility createRentAndUtility (RentAndUtility rentAndUtility);
 	public boolean deleteRentAndUtility(RentAndUtility rentAndUtility);
+	public RentAndUtility getRentAndUtilityById(int id);
 }

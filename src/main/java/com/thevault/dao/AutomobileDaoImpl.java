@@ -87,4 +87,23 @@ public class AutomobileDaoImpl implements AutomobileDao{
 		 }
 	}
 
+	public Automobile getAutomobileById(int id) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		try {
+			tx = sess.beginTransaction();
+			Automobile result = (Automobile)sess.get(Automobile.class, id);
+			tx.commit();
+			if(result != null)
+				return result;
+			else 
+				return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.thevault.beans.Entertainment;
 import com.thevault.beans.Food;
 import com.thevault.beans.User;
 import com.thevault.config.HibernateUtil;
@@ -85,6 +86,25 @@ public class FoodDaoImpl implements FoodDao{
 		 finally {
 		     sess.close();
 		 }
+	}
+
+	public Food getFoodById(int id) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		try {
+			tx = sess.beginTransaction();
+			Food result = (Food)sess.get(Food.class, id);
+			tx.commit();
+			if(result != null)
+				return result;
+			else 
+				return null;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

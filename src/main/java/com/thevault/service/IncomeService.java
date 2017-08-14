@@ -29,4 +29,9 @@ public class IncomeService {
 		System.out.println("deleting income: \n" + income);
 		return incomeDao.deleteIncome(income);
 	}
+	public Income getIncomeById(int id){
+		System.out.println("in getIncomeById service");
+		System.out.println("id: " + id);
+		return incomeDao.getIncomeById(id);
+	}
 }
