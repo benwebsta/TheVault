@@ -265,5 +265,28 @@ app.controller("MiscellaneousController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteMiscellaneousEntry = function(miscellaneousEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteMiscellaneousEntry(miscellaneousEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteMiscellaneousEntry = function(miscellaneousEntry){
+			console.log("in delete miscellaneous entry is: \n");
+			console.log(miscellaneousEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteMiscellaneous',
+		    	  data: miscellaneousEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllMiscellaneouses();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		  
 	}]);
