@@ -77,7 +77,7 @@
 	        <li ui-sref-active="active" ng-controller="HealthAndFitnessController"><a ui-sref="healthAndFitness" ng-click="getAllHealthAndFitnesses()">Health and Fitness</a></li>
 	        <li ui-sref-active="active" ng-controller="EntertainmentController"><a ui-sref="entertainment" ng-click="getAllEntertainments()">Entertainment</a></li>
 	        <li ui-sref-active="active" ng-controller="MiscellaneousController"><a ui-sref="miscellaneous" ng-click="getAllMiscellaneouses()">Miscellaneous</a></li>
-	        <li ui-sref-active="active"><a>{{username}}</a></li>
+	        <li ui-sref-active="active"><a style="font-weight: bold;">Balance: {{balance}}</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right" ng-if="user" ng-cloak>
 	        <li ui-sref-active="active" ng-controller="SummaryController"><a ui-sref="summary" ng-click="getAllFinances()">Summary</a></li>

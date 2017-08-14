@@ -24,6 +24,9 @@ app.controller("NavbarController",
 					    	  data: $rootScope.user
 					    	}).then(function successCallback(response) {
 					    		$rootScope.banks = response.data;
+					    		$rootScope.balance = $rootScope.banks.sort(function(a,b) { 
+					    		    return new Date(b.bankDate).getTime() - new Date(a.bankDate).getTime() 
+					    		})[0].balance;
 					    	  }, function errorCallback(response) {
 					    		  console.log("error");
 					    	  });
