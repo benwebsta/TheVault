@@ -71,57 +71,55 @@ public class SummaryRestController {
 		System.out.println("JSON: " + summaryJSON);
 		
 		JsonElement jelement = new JsonParser().parse(summaryJSON);
-		System.out.println(jelement);	
 		JsonObject  jobject = jelement.getAsJsonObject();
-		System.out.println(jobject);
-		JsonPrimitive tempObject = jobject.getAsJsonPrimitive("amount");
-		String amount = tempObject.getAsString();
-		tempObject = jobject.getAsJsonPrimitive("group");
+		
+		JsonPrimitive tempObject = jobject.getAsJsonPrimitive("group");
 		String group = tempObject.getAsString();
-		tempObject = jobject.getAsJsonPrimitive("description");
-		String description = tempObject.getAsString();
-		tempObject = jobject.getAsJsonPrimitive("date");
-		String date = tempObject.getAsString();
+		
 		tempObject = jobject.getAsJsonPrimitive("id");
 		String tempId = tempObject.getAsString();
 		int id = Integer.parseInt(tempId);
 		
-		System.out.println("amount: " + amount);
 		System.out.println("group: " + group);
-		System.out.println("description: " + description);
-		System.out.println("date: " + date);
 		System.out.println("id: " + id);
+		
 		if(group.equals("Automobile")){
 			Automobile automobile = automobileService.getAutomobileById(id);
 			System.out.println("deleting: " + automobile);
+			return automobileService.deleteAutomobile(automobile);
 		}
 		else if(group.equals("Entertainment")){
 			Entertainment entertainment = entertainmentService.getEntertainmentById(id);
 			System.out.println("deleting: " + entertainment);
+			return entertainmentService.deleteEntertainment(entertainment);
 		}
 		else if(group.equals("Food")){
 			Food food = foodService.getFoodById(id);
 			System.out.println("deleting: " + food);
+			return foodService.deleteFood(food);
 		}
 		else if(group.equals("HealthAndFitness")){
 			HealthAndFitness healthAndFitness = healthAndFitnessService.getHealthAndFitnessById(id);
 			System.out.println("deleting: " + healthAndFitness);
+			return healthAndFitnessService.deleteHealthAndFitness(healthAndFitness);
 		}
 		else if(group.equals("Income")){
 			Income income = incomeService.getIncomeById(id);
 			System.out.println("deleting: " + income);
+			return incomeService.deleteIncome(income);
 		}
 		else if(group.equals("Miscellaneous")){
 			Miscellaneous miscellaneous = miscellaneousService.getMiscellaneousById(id);
 			System.out.println("deleting: " + miscellaneous);
+			return miscellaneousService.deleteMiscellaneous(miscellaneous);
 		}
 		else if(group.equals("RentAndUtility")){
 			RentAndUtility rentAndUtility = rentAndUtilityService.getRentAndUtilityById(id);
 			System.out.println("deleting: " + rentAndUtility);
+			return rentAndUtilityService.deleteRentAndUtility(rentAndUtility);
 		}
-		/*System.out.println("food: " + food);
-		boolean result = summaryJSON.deleteFood(food);
-		System.out.println(result);*/
-		return false;
+		else{
+			return false;
+		}
 	}
 }
