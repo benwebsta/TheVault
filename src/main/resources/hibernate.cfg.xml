@@ -20,6 +20,7 @@
 		<mapping class="com.thevault.beans.Miscellaneous"/>
 		<mapping class="com.thevault.beans.RentAndUtility"/>
 		<mapping class="com.thevault.beans.User"/>
+		<mapping class="com.thevault.beans.Bank"/>
 		
 	</session-factory>
 </hibernate-configuration>

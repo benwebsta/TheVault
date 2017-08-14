@@ -17,6 +17,17 @@ app.controller("NavbarController",
 			    	  data: userGet
 			    	}).then(function successCallback(response) {
 			    		$rootScope.user = response.data;
+			    		
+			    		$http({
+					    	  method: 'POST',
+					    	  url: 'getAllBanks',
+					    	  data: $rootScope.user
+					    	}).then(function successCallback(response) {
+					    		$rootScope.banks = response.data;
+					    	  }, function errorCallback(response) {
+					    		  console.log("error");
+					    	  });
+			    		
 			    		$state.go("summary");
 			    		$timeout(getFin, 1000);
 			    	  }, function errorCallback(response) {

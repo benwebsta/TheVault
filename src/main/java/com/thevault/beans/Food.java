@@ -31,7 +31,7 @@ public class Food {
 
 	@Column(name="AMOUNT")
 	@Qualifier("amount")
-	private int amount;
+	private double amount;
 	
 	@Column(name="DESCRIPTION")
 	@Qualifier("description")
@@ -64,11 +64,11 @@ public class Food {
 		this.foodId = foodId;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
