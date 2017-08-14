@@ -265,5 +265,28 @@ app.controller("HealthAndFitnessController",
 			display(december);
 			$rootScope.selectedMonth = "December";
 		}
+		$scope.deleteHealthAndFitnessEntry = function(healthAndFitnessEntry){
+			if (confirm("Are you sure you want to delete this?") == true) {
+			    $scope.reallyDeleteHealthAndFitnessEntry(healthAndFitnessEntry);
+			} else {
+			    console.log("cancelled");
+			}
+		}
+		$scope.reallyDeleteHealthAndFitnessEntry = function(healthAndFitnessEntry){
+			console.log("in delete healthAndFitness entry is: \n");
+			console.log(healthAndFitnessEntry);
+			$http({
+		    	  method: 'DELETE',
+		    	  url: 'deleteHealthAndFitness',
+		    	  data: healthAndFitnessEntry
+		    	}).then(function successCallback(response) {
+		    	   console.log(response.data);
+		    	   $scope.allSelected = false;
+		    	   $scope.getAllHealthAndFitnesses();
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	   	  console.log(response.data);
+		    	  });
+		}
 		  
 	}]);
