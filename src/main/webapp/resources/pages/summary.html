@@ -48,7 +48,8 @@
 					<th ng-show="delete == true">Delete</th>
 				</tr>
 				<tr ng-repeat="summaryEntry in summaryEntries">
-					<td>${{summaryEntry.amount}}</td>
+					<td ng-if="summaryEntry.group == 'Income'" style="color:green;">${{summaryEntry.amount}}</td>
+					<td ng-if="summaryEntry.group != 'Income'" style="color:red;">${{summaryEntry.amount}}</td>
 					<td>{{summaryEntry.group}}</td>
 					<td>{{summaryEntry.description}}</td>
 					<td>{{summaryEntry.date}}</td>

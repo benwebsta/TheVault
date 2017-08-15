@@ -46,6 +46,7 @@ app.controller("SummaryController",
 	    						summaryEntry.group = "Automobile";
 	    						summaryEntry.description = list[i][j].description;
 	    						summaryEntry.date = list[i][j].automobileDate;
+	    						summaryEntry.balance = list[i][j].balance;
 	    						//console.log(summaryEntry);
 	    						$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -61,6 +62,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Entertainment";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].entertainmentDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 								break;
@@ -76,6 +78,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Food";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].foodDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -91,6 +94,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "HealthAndFitness";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].healthAndFitnessDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -106,6 +110,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Income";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].incomeDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -121,6 +126,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "Miscellaneous";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].miscellaneousDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -136,6 +142,7 @@ app.controller("SummaryController",
 								summaryEntry.group = "RentAndUtility";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].rentAndUtilityDate;
+	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
