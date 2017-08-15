@@ -7,4 +7,5 @@ import com.thevault.beans.User;
 
 public interface BankDao {
 	public List<Bank> getBanksByUser(User user);
+	public Bank createBank(Bank bank);
 }

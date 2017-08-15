@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.thevault.beans.User;
+import com.thevault.service.BankService;
 import com.thevault.service.UserService;
 
 
@@ -21,6 +22,8 @@ public class UserRestController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BankService bankService;
 
 	@RequestMapping(method=RequestMethod.POST, value="/createNewUser")
 	public @ResponseBody User createNewUser_JSON(@RequestBody String newUserJson){
@@ -42,11 +45,11 @@ public class UserRestController {
 		tempObject = jobject.getAsJsonPrimitive("password");
 		String password = tempObject.getAsString();
 		
-		tempObject = jobject.getAsJsonPrimitive("balance");
+/*		tempObject = jobject.getAsJsonPrimitive("balance");
 		String tempBalance = tempObject.getAsString();
 		double balance = Double.parseDouble(tempBalance);
 
-		System.out.println(balance);
+		System.out.println(balance);*/
 		
 		User newUser = new User(firstName, lastName, username, password);
 		System.out.println(newUser);

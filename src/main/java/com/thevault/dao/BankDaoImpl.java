@@ -35,4 +35,30 @@ public class BankDaoImpl implements BankDao{
 		}
 	}
 
+	public Bank createBank(Bank bank) {
+		System.out.println("in dao create bank");
+		System.out.println(bank);
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     System.out.println(bank);
+			 sess.saveOrUpdate(bank);
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return bank;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return null;
+		 }
+		 finally {
+			 sess.close();
+		 }
+	}
+
 }

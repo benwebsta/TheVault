@@ -31,8 +31,7 @@ app.controller("RegistrationController",
 							    	  method: 'POST',
 							    	  url: 'createNewUser',
 							    	  data: userCreate
-							    	}).then(function successCallback(response) {
-							    		
+							    	}).then(function successCallback(response) {							    		
 							    		var oneMonth = new Date();
 										console.log("today: " + oneMonth);
 										oneMonth.setDate(oneMonth.getDate() + 30);
@@ -50,14 +49,34 @@ app.controller("RegistrationController",
 								    	}).then(function successCallback(response) {
 								    		$rootScope.user = response.data;
 											$rootScope.username = response.data.username;
+											console.log("user: " + $rootScope.user);
+											console.log("username: " + $rootScope.username);
 											$cookies.put('user', $rootScope.user.username, {
 												expires: oneMonth
 											});
+								    		
+								    		var bank = {
+									    			balance: $scope.startingBalance,
+									    			user: $rootScope.user
+									    		}
+								    		
+								    		$http({
+										    	  method: 'POST',
+										    	  url: 'createNewBank',
+										    	  data: bank
+										    	}).then(function successCallback(response) {
+										    		console.log("bank created: \n" + response.data);
+										    				
+													$state.go("summary");
+										    	  }, function errorCallback(response) {
+										    		  console.log("error");
+										    	  });
+								    		
+								    		
 								    	  }, function errorCallback(response) {
 								    		  console.log("error");
 								    	  });
 										
-										$state.go("summary");
 							    	  }, function errorCallback(response) {
 							    		  console.log("error");
 							    	  });

@@ -24,7 +24,7 @@ public class FoodRestController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/createNewFood")
 	public @ResponseBody Food createNewFood_JSON(@RequestBody String newFoodJSON){
-		System.out.println("POST income rest controller hit");
+		System.out.println("POST bank rest controller hit");
 		System.out.println("JSON: " + newFoodJSON);
 		
 		Gson gson = new Gson();

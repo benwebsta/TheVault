@@ -18,4 +18,9 @@ public class BankService {
 		System.out.println("user: " + user);
 		return bankDao.getBanksByUser(user);
 	}
+	public Bank createBank(Bank bank){
+		System.out.println("in createBank service");
+		System.out.println("bank: " + bank);
+		return bankDao.createBank(bank);
+	}
 }
