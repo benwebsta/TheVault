@@ -45,12 +45,6 @@ public class UserRestController {
 		tempObject = jobject.getAsJsonPrimitive("password");
 		String password = tempObject.getAsString();
 		
-/*		tempObject = jobject.getAsJsonPrimitive("balance");
-		String tempBalance = tempObject.getAsString();
-		double balance = Double.parseDouble(tempBalance);
-
-		System.out.println(balance);*/
-		
 		User newUser = new User(firstName, lastName, username, password);
 		System.out.println(newUser);
 		

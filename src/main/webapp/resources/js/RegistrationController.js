@@ -72,7 +72,6 @@ app.controller("RegistrationController",
 										    		  console.log("error");
 										    	  });
 								    		
-								    		
 								    	  }, function errorCallback(response) {
 								    		  console.log("error");
 								    	  });
