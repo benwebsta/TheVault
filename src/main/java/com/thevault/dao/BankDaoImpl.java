@@ -2,9 +2,12 @@ package com.thevault.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import com.thevault.beans.Automobile;
 import com.thevault.beans.Bank;
@@ -49,6 +52,33 @@ public class BankDaoImpl implements BankDao{
 			 System.out.println("end of tx");
 		     tx.commit();
 		     return bank;
+
+		 }
+		 catch (Exception e) {
+			 System.out.println(e);
+			 e.printStackTrace();
+			 return null;
+		 }
+		 finally {
+			 sess.close();
+		 }
+	}
+
+	public Bank getMostRecentEntry(User user) {
+		System.out.println("in dao get most recent bank");
+		Session sess = HibernateUtil.getSession();
+		Transaction tx;
+		
+		 try {
+		     tx = sess.beginTransaction();
+		     System.out.println(" in tx");
+		     Criteria c = sess.createCriteria(Bank.class);
+			 c.addOrder(Order.desc("bankId"));
+			 c.add(Restrictions.eq("user", user));
+			 System.out.println(c.list().get(0));
+			 System.out.println("end of tx");
+		     tx.commit();
+		     return (Bank) c.list().get(0);
 
 		 }
 		 catch (Exception e) {
