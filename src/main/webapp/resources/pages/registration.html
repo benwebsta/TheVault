@@ -35,6 +35,10 @@
 				        <p ng-message="required">Your password is required.</p>
 			      	</div>
 				</div>
+				<div ng-class="{ 'has-error': userForm.startingBalance.$touched && userForm.startingBalance.$invalid }">
+					<input type="number" name="startingBalance" placeholder="Starting Balance (can be 0)" 
+					required id="startingBalance" ng-model="startingBalance"/>
+				</div>
 				<div id="registerButton">
 					<input type="submit" value="Register" ng-click="userForm.$valid && register()"/>
 				</div>

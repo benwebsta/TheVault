@@ -10,7 +10,8 @@ app.controller("RegistrationController",
 				    		firstName : $scope.firstName, 
 				    		lastName : $scope.lastName,
 				    		username : $scope.username,
-				    		password : $scope.password
+				    		password : $scope.password, 
+				    		balance: $scope.startingBalance
 				    }
 			    	$http({
 				    	  method: 'POST',

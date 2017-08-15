@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import com.thevault.beans.User;
 import com.thevault.service.UserService;
 
@@ -22,9 +26,31 @@ public class UserRestController {
 	public @ResponseBody User createNewUser_JSON(@RequestBody String newUserJson){
 		System.out.println("POST user rest controller hit");
 		System.out.println(newUserJson);
+		
+		JsonElement jelement = new JsonParser().parse(newUserJson);
+		JsonObject  jobject = jelement.getAsJsonObject();
+		
+		JsonPrimitive tempObject = jobject.getAsJsonPrimitive("firstName");
+		String firstName = tempObject.getAsString();
+		
+		tempObject = jobject.getAsJsonPrimitive("lastName");
+		String lastName = tempObject.getAsString();
+		
+		tempObject = jobject.getAsJsonPrimitive("username");
+		String username = tempObject.getAsString();
+		
+		tempObject = jobject.getAsJsonPrimitive("password");
+		String password = tempObject.getAsString();
+		
+		tempObject = jobject.getAsJsonPrimitive("balance");
+		String tempBalance = tempObject.getAsString();
+		double balance = Double.parseDouble(tempBalance);
 
-		Gson gson = new Gson();
-		User newUser = gson.fromJson(newUserJson, User.class);
+		System.out.println(balance);
+		
+		User newUser = new User(firstName, lastName, username, password);
+		System.out.println(newUser);
+		
 		User user = userService.createUser(newUser);
 		System.out.println(user);
 		return user;
