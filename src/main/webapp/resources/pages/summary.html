@@ -44,13 +44,15 @@
 					<th>Group</th>
 					<th>Description</th>
 					<th>Date</th>
+					<th>Balance</th>
 					<th ng-show="delete == true">Delete</th>
 				</tr>
 				<tr ng-repeat="summaryEntry in summaryEntries">
-					<td>{{summaryEntry.amount}}</td>
+					<td>${{summaryEntry.amount}}</td>
 					<td>{{summaryEntry.group}}</td>
 					<td>{{summaryEntry.description}}</td>
 					<td>{{summaryEntry.date}}</td>
+					<td>${{summaryEntry.balance}}</td>
 					<td ng-click="deleteSummaryEntry(summaryEntry)" ng-show="delete == true" class="delete-row-entry">
 						<span class="glyphicon glyphicon-remove delete-button" aria-hidden="true"></span>
 					</td>

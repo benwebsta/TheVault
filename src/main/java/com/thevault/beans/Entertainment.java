@@ -44,16 +44,21 @@ public class Entertainment {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User user;
+	
+	@Column(name="BALANCE")
+	@Qualifier("balance")
+	private double balance;
 
 	public Entertainment(){}
 
-	public Entertainment(int entertainmentId, int amount, String description, Date entertainmentDate, User user) {
+	public Entertainment(int entertainmentId, int amount, String description, Date entertainmentDate, User user, double balance) {
 		super();
 		this.entertainmentId = entertainmentId;
 		this.amount = amount;
 		this.description = description;
 		this.entertainmentDate = entertainmentDate;
 		this.user = user;
+		this.balance = balance;
 	}
 
 	public int getEntertainmentId() {
@@ -96,10 +101,18 @@ public class Entertainment {
 		this.user = user;
 	}
 
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 	@Override
 	public String toString() {
 		return "Entertainment [entertainmentId=" + entertainmentId + ", amount=" + amount + ", description="
-				+ description + ", entertainmentDate=" + entertainmentDate + ", user=" + user + "]";
+				+ description + ", entertainmentDate=" + entertainmentDate + ", user=" + user + ", balance=" + balance + "]";
 	}
 
 }

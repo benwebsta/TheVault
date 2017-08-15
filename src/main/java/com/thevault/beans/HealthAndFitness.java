@@ -44,17 +44,22 @@ public class HealthAndFitness {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User user;
+	
+	@Column(name="BALANCE")
+	@Qualifier("balance")
+	private double balance;
 
 	public HealthAndFitness(){}
 
 	public HealthAndFitness(int healthAndFitnessId, int amount, String description, Date healthAndFitnessDate,
-			User user) {
+			User user, double balance) {
 		super();
 		this.healthAndFitnessId = healthAndFitnessId;
 		this.amount = amount;
 		this.description = description;
 		this.healthAndFitnessDate = healthAndFitnessDate;
 		this.user = user;
+		this.balance = balance;
 	}
 
 	public int getHealthAndFitnessId() {
@@ -97,10 +102,18 @@ public class HealthAndFitness {
 		this.user = user;
 	}
 
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 	@Override
 	public String toString() {
 		return "HealthAndFitness [healthAndFitnessId=" + healthAndFitnessId + ", amount=" + amount + ", description="
-				+ description + ", healthAndFitnessDate=" + healthAndFitnessDate + ", user=" + user + "]";
+				+ description + ", healthAndFitnessDate=" + healthAndFitnessDate + ", user=" + user + ", balance=" + balance + "]";
 	}
 
 }
