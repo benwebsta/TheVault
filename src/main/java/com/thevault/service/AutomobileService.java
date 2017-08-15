@@ -25,10 +25,9 @@ public class AutomobileService {
 	public Automobile createAutomobile(Automobile automobile){
 		System.out.println("in createAutomobile service");
 		System.out.println("creating automobile: " + automobile);
-		Automobile test = automobileDao.createAutomobile(automobile);
-		Bank recent = bankDao.getMostRecentEntry(test.getUser());
-		System.out.println("most recent: " + recent);
-		return test;
+		Bank bank = new Bank(0, automobile.getBalance(), automobile.getAutomobileDate(), automobile.getUser());
+		bankDao.createBank(bank);
+		return automobileDao.createAutomobile(automobile);
 	}
 	public boolean deleteAutomobile(Automobile automobile){
 		System.out.println("in deleteAutomobile service");

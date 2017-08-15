@@ -84,11 +84,14 @@ app.controller("AutomobileController",
 		
 		
 		$scope.automobileEntrySubmit = function(){
+			var newBalance = $rootScope.balance - $scope.amount;
 			var automobile = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user, 
+					balance: newBalance
 			}
+			$rootScope.balance = newBalance;
 			console.log("automobile controller entry click");
 			console.log(automobile);
 			

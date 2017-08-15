@@ -101,7 +101,7 @@ public class RentAndUtility {
 		this.user = user;
 	}
 
-	public double getbalance() {
+	public double getBalance() {
 		return balance;
 	}
 

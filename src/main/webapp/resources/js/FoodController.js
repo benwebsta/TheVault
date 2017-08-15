@@ -84,11 +84,14 @@ app.controller("FoodController",
 		
 		
 		$scope.foodEntrySubmit = function(){
+			var newBalance = $rootScope.balance - $scope.amount;
 			var food = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user, 
+					balance: newBalance
 			}
+			$rootScope.balance = newBalance;
 			console.log("food controller entry click");
 			console.log(food);
 			

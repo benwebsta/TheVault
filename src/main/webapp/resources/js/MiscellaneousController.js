@@ -84,11 +84,14 @@ app.controller("MiscellaneousController",
 		
 		
 		$scope.miscellaneousEntrySubmit = function(){
+			var newBalance = $rootScope.balance - $scope.amount;
 			var miscellaneous = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user, 
+					balance: newBalance
 			}
+			$rootScope.balance = newBalance;
 			console.log("miscellaneous controller entry click");
 			console.log(miscellaneous);
 			

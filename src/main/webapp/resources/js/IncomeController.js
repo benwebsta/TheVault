@@ -84,11 +84,14 @@ app.controller("IncomeController",
 		
 		
 		$scope.incomeEntrySubmit = function(){
+			var newBalance = $rootScope.balance + $scope.amount;
 			var income = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user, 
+					balance: newBalance
 			}
+			$rootScope.balance = newBalance;
 			console.log("income controller entry click");
 			console.log(income);
 			
