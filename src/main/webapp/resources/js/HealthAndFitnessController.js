@@ -88,8 +88,7 @@ app.controller("HealthAndFitnessController",
 			var healthAndFitness = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user, 
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("healthAndFitness controller entry click");
@@ -284,6 +283,7 @@ app.controller("HealthAndFitnessController",
 		    	  data: healthAndFitnessEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += healthAndFitnessEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllHealthAndFitnesses();
 		    	  }, function errorCallback(response) {

@@ -88,8 +88,7 @@ app.controller("EntertainmentController",
 			var entertainment = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user,
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("entertainment controller entry click");
@@ -285,6 +284,7 @@ app.controller("EntertainmentController",
 		    	  data: entertainmentEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += entertainmentEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllEntertainments();
 		    	  }, function errorCallback(response) {

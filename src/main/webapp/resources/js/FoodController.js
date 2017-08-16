@@ -88,8 +88,7 @@ app.controller("FoodController",
 			var food = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user, 
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("food controller entry click");
@@ -284,6 +283,7 @@ app.controller("FoodController",
 		    	  data: foodEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += foodEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllFoods();
 		    	  }, function errorCallback(response) {

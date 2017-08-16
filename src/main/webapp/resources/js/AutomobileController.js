@@ -88,8 +88,7 @@ app.controller("AutomobileController",
 			var automobile = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user, 
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("automobile controller entry click");
@@ -283,6 +282,7 @@ app.controller("AutomobileController",
 		    	  data: automobileEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += automobileEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllAutomobiles();
 		    	  }, function errorCallback(response) {

@@ -44,21 +44,16 @@ public class RentAndUtility {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User user;
-	
-	@Column(name="BALANCE")
-	@Qualifier("balance")
-	private double balance;
 
 	public RentAndUtility(){}
 
-	public RentAndUtility(int rentAndUtilityId, int amount, String description, Date rentAndUtilityDate, User user, double balance) {
+	public RentAndUtility(int rentAndUtilityId, int amount, String description, Date rentAndUtilityDate, User user) {
 		super();
 		this.rentAndUtilityId = rentAndUtilityId;
 		this.amount = amount;
 		this.description = description;
 		this.rentAndUtilityDate = rentAndUtilityDate;
 		this.user = user;
-		this.balance = balance;
 	}
 
 	public int getRentAndUtilityId() {
@@ -101,18 +96,10 @@ public class RentAndUtility {
 		this.user = user;
 	}
 
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
 	@Override
 	public String toString() {
 		return "RentAndUtility [rentAndUtilityId=" + rentAndUtilityId + ", amount=" + amount + ", description="
-				+ description + ", rentAndUtilityDate=" + rentAndUtilityDate + ", user=" + user + ", balance=" + balance + "]";
+				+ description + ", rentAndUtilityDate=" + rentAndUtilityDate + ", user=" + user + "]";
 	}
 
 }

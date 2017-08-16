@@ -25,13 +25,17 @@ public class EntertainmentService {
 	public Entertainment createEntertainment(Entertainment entertainment){
 		System.out.println("in createEntertainment service");
 		System.out.println("creating entertainment: " + entertainment);
-		Bank bank = new Bank(0, entertainment.getBalance(), entertainment.getEntertainmentDate(), entertainment.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(entertainment.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - entertainment.getAmount(), entertainment.getEntertainmentDate(), entertainment.getUser());
 		bankDao.createBank(bank);
 		return entertainmentDao.createEntertainment(entertainment);
 	}
 	public boolean deleteEntertainment(Entertainment entertainment){
 		System.out.println("in deleteEntertainment service");
 		System.out.println("deleting entertainment: \n" + entertainment);
+		Bank recentBank = bankDao.getMostRecentEntry(entertainment.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + entertainment.getAmount(), entertainment.getEntertainmentDate(), entertainment.getUser());
+		bankDao.createBank(bank);
 		return entertainmentDao.deleteEntertainment(entertainment);
 	}
 	public Entertainment getEntertainmentById(int id){

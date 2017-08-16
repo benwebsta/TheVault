@@ -25,13 +25,17 @@ public class RentAndUtilityService {
 	public RentAndUtility createRentAndUtility(RentAndUtility rentAndUtility){
 		System.out.println("in createRentAndUtility service");
 		System.out.println("creating rentAndUtility: " + rentAndUtility);
-		Bank bank = new Bank(0, rentAndUtility.getBalance(), rentAndUtility.getRentAndUtilityDate(), rentAndUtility.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(rentAndUtility.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - rentAndUtility.getAmount(), rentAndUtility.getRentAndUtilityDate(), rentAndUtility.getUser());
 		bankDao.createBank(bank);
 		return rentAndUtilityDao.createRentAndUtility(rentAndUtility);
 	}
 	public boolean deleteRentAndUtility(RentAndUtility rentAndUtility){
 		System.out.println("in deleteRentAndUtility service");
 		System.out.println("deleting rentAndUtility: \n" + rentAndUtility);
+		Bank recentBank = bankDao.getMostRecentEntry(rentAndUtility.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + rentAndUtility.getAmount(), rentAndUtility.getRentAndUtilityDate(), rentAndUtility.getUser());
+		bankDao.createBank(bank);
 		return rentAndUtilityDao.deleteRentAndUtility(rentAndUtility);
 	}
 	public RentAndUtility getRentAndUtilityById(int id){

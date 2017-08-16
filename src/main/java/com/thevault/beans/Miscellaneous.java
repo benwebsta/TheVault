@@ -44,21 +44,16 @@ public class Miscellaneous {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User user;
-	
-	@Column(name="BALANCE")
-	@Qualifier("balance")
-	private double balance;
 
 	public Miscellaneous(){}
 
-	public Miscellaneous(int miscellaneousId, int amount, String description, Date miscellaneousDate, User user, double balance) {
+	public Miscellaneous(int miscellaneousId, int amount, String description, Date miscellaneousDate, User user) {
 		super();
 		this.miscellaneousId = miscellaneousId;
 		this.amount = amount;
 		this.description = description;
 		this.miscellaneousDate = miscellaneousDate;
 		this.user = user;
-		this.balance = balance;
 	}
 
 	public int getMiscellaneousId() {
@@ -101,18 +96,10 @@ public class Miscellaneous {
 		this.user = user;
 	}
 
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
 	@Override
 	public String toString() {
 		return "Miscellaneous [miscellaneousId=" + miscellaneousId + ", amount=" + amount + ", description="
-				+ description + ", miscellaneousDate=" + miscellaneousDate + ", user=" + user + ", balance=" + balance + "]";
+				+ description + ", miscellaneousDate=" + miscellaneousDate + ", user=" + user + "]";
 	}
 	
 }

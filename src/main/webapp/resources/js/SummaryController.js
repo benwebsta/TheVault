@@ -9,20 +9,6 @@ app.controller("SummaryController",
 			console.log("in get all finances");
 			
 			$http({
-		    	  method: 'POST',
-		    	  url: 'getAllBanks',
-		    	  data: $rootScope.user
-		    	}).then(function successCallback(response) {
-		    		$rootScope.banks = response.data;
-		    		$rootScope.balance = $rootScope.banks.sort(function(a,b) { 
-		    		    return new Date(b.bankDate).getTime() - new Date(a.bankDate).getTime() 
-		    		})[0].balance;
-		    		console.log("balance: " + $rootScope.balance);
-		    	  }, function errorCallback(response) {
-		    		  console.log("error");
-		    	  });
-			
-			$http({
 	    	  method: 'POST',
 	    	  url: 'getAllFinances',
 	    	  data: $scope.user
@@ -46,7 +32,6 @@ app.controller("SummaryController",
 	    						summaryEntry.group = "Automobile";
 	    						summaryEntry.description = list[i][j].description;
 	    						summaryEntry.date = list[i][j].automobileDate;
-	    						summaryEntry.balance = list[i][j].balance;
 	    						//console.log(summaryEntry);
 	    						$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -62,7 +47,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "Entertainment";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].entertainmentDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 								break;
@@ -78,7 +62,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "Food";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].foodDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -94,7 +77,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "HealthAndFitness";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].healthAndFitnessDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -110,7 +92,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "Income";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].incomeDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -126,7 +107,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "Miscellaneous";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].miscellaneousDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -142,7 +122,6 @@ app.controller("SummaryController",
 								summaryEntry.group = "RentAndUtility";
 	    						summaryEntry.description = list[i][j].description;
 								summaryEntry.date = list[i][j].rentAndUtilityDate;
-	    						summaryEntry.balance = list[i][j].balance;
 								//console.log(summaryEntry);
 								$rootScope.summaryEntries.push(summaryEntry);
 	    						break;
@@ -246,7 +225,7 @@ app.controller("SummaryController",
     		$rootScope.entertainmentTotal = 0;
     		$rootScope.foodTotal = 0;
     		$rootScope.healthAndFitnessTotal = 0;
-    		$rootScope.summaryTotal = 0;
+    		$rootScope.incomeTotal = 0;
     		$rootScope.miscellaneousTotal = 0;
     		$rootScope.rentAndUtilityTotal = 0;
 			
@@ -267,9 +246,9 @@ app.controller("SummaryController",
     				console.log("3");
     				$rootScope.healthAndFitnessTotal += summaryArray[x].amount;
     			}
-    			else if(summaryArray[x].group == "Summary"){
+    			else if(summaryArray[x].group == "Income"){
     				console.log("4");
-    				$rootScope.summaryTotal += summaryArray[x].amount;
+    				$rootScope.incomeTotal += summaryArray[x].amount;
     			}
     			else if(summaryArray[x].group == "Miscellaneous"){
     				console.log("5");
@@ -299,10 +278,10 @@ app.controller("SummaryController",
 			$rootScope.summaryData.push($rootScope.healthAndFitnessTotal);
 			$rootScope.summaryLabels2.push("healthAndFitness");
 			$rootScope.summaryData2.push($rootScope.healthAndFitnessTotal);
-			$rootScope.summaryLabels.push("income");
-			$rootScope.summaryData.push($rootScope.summaryTotal);
-			$rootScope.summaryLabels2.push("income");
-			$rootScope.summaryData2.push($rootScope.summaryTotal);
+			/*$rootScope.summaryLabels.push("income");
+			$rootScope.summaryData.push($rootScope.incomeTotal);
+			$rootScope.summaryLabels2.push("income");*/
+			$rootScope.summaryData2.push($rootScope.incomeTotal);
 			$rootScope.summaryLabels.push("miscellaneous");
 			$rootScope.summaryData.push($rootScope.miscellaneousTotal);
 			$rootScope.summaryLabels2.push("miscellaneous");
@@ -454,6 +433,10 @@ app.controller("SummaryController",
 		    	  data: summaryEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   if(summaryEntry.group == "Income")
+		    		   $rootScope.balance -= summaryEntry.amount;
+		    	   else
+		    		   $rootScope.balance += summaryEntry.amount;
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllFinances();
 		    	  }, function errorCallback(response) {

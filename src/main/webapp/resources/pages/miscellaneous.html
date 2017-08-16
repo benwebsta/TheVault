@@ -41,14 +41,12 @@
 					<th>Amount</th>
 					<th>Description</th>
 					<th>Date</th>
-					<th>Balance</th>
 					<th ng-show="delete == true">Delete</th>
 				</tr>
 				<tr ng-repeat="miscellaneousEntry in miscellaneousEntries">
 					<td style="color: red;">${{miscellaneousEntry.amount}}</td>
 					<td>{{miscellaneousEntry.description}}</td>
 					<td>{{miscellaneousEntry.miscellaneousDate}}</td>
-					<td>${{miscellaneousEntry.balance}}</td>
 					<td ng-click="deleteMiscellaneousEntry(miscellaneousEntry)" ng-show="delete == true" class="delete-row-entry">
 						<span class="glyphicon glyphicon-remove delete-button" aria-hidden="true"></span>
 					</td>

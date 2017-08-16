@@ -88,8 +88,7 @@ app.controller("MiscellaneousController",
 			var miscellaneous = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user, 
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("miscellaneous controller entry click");
@@ -284,6 +283,7 @@ app.controller("MiscellaneousController",
 		    	  data: miscellaneousEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += miscellaneousEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllMiscellaneouses();
 		    	  }, function errorCallback(response) {

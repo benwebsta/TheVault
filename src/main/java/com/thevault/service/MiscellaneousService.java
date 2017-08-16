@@ -25,13 +25,17 @@ public class MiscellaneousService {
 	public Miscellaneous createMiscellaneous(Miscellaneous miscellaneous){
 		System.out.println("in createMiscellaneous service");
 		System.out.println("creating miscellaneous: " + miscellaneous);
-		Bank bank = new Bank(0, miscellaneous.getBalance(), miscellaneous.getMiscellaneousDate(), miscellaneous.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(miscellaneous.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - miscellaneous.getAmount(), miscellaneous.getMiscellaneousDate(), miscellaneous.getUser());
 		bankDao.createBank(bank);
 		return miscellaneousDao.createMiscellaneous(miscellaneous);
 	}
 	public boolean deleteMiscellaneous(Miscellaneous miscellaneous){
 		System.out.println("in deleteMiscellaneous service");
 		System.out.println("deleting miscellaneous: \n" + miscellaneous);
+		Bank recentBank = bankDao.getMostRecentEntry(miscellaneous.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + miscellaneous.getAmount(), miscellaneous.getMiscellaneousDate(), miscellaneous.getUser());
+		bankDao.createBank(bank);
 		return miscellaneousDao.deleteMiscellaneous(miscellaneous);
 	}
 	public Miscellaneous getMiscellaneousById(int id){

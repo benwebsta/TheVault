@@ -25,13 +25,17 @@ public class HealthAndFitnessService {
 	public HealthAndFitness createHealthAndFitness(HealthAndFitness healthAndFitness){
 		System.out.println("in createHealthAndFitness service");
 		System.out.println("creating healthAndFitness: " + healthAndFitness);
-		Bank bank = new Bank(0, healthAndFitness.getBalance(), healthAndFitness.getHealthAndFitnessDate(), healthAndFitness.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(healthAndFitness.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - healthAndFitness.getAmount(), healthAndFitness.getHealthAndFitnessDate(), healthAndFitness.getUser());
 		bankDao.createBank(bank);
 		return healthAndFitnessDao.createHealthAndFitness(healthAndFitness);
 	}
 	public boolean deleteHealthAndFitness(HealthAndFitness healthAndFitness){
 		System.out.println("in deleteHealthAndFitness service");
 		System.out.println("deleting healthAndFitness: \n" + healthAndFitness);
+		Bank recentBank = bankDao.getMostRecentEntry(healthAndFitness.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + healthAndFitness.getAmount(), healthAndFitness.getHealthAndFitnessDate(), healthAndFitness.getUser());
+		bankDao.createBank(bank);
 		return healthAndFitnessDao.deleteHealthAndFitness(healthAndFitness);
 	}
 	public HealthAndFitness getHealthAndFitnessById(int id){

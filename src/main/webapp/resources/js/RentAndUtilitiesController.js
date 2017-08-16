@@ -88,8 +88,7 @@ app.controller("RentAndUtilitiesController",
 			var rentAndUtilities = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user, 
-					balance: newBalance
+					user: $scope.user
 			}
 			$rootScope.balance = newBalance;
 			console.log("rentAndUtilities controller entry click");
@@ -284,6 +283,7 @@ app.controller("RentAndUtilitiesController",
 		    	  data: rentAndUtilityEntry
 		    	}).then(function successCallback(response) {
 		    	   console.log(response.data);
+		    	   $rootScope.balance += rentAndUtilityEntry.amount
 		    	   $scope.allSelected = false;
 		    	   $scope.getAllRentAndUtilities();
 		    	  }, function errorCallback(response) {

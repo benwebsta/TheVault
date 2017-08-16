@@ -44,21 +44,16 @@ public class Automobile {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User user;
-	
-	@Column(name="BALANCE")
-	@Qualifier("balance")
-	private double balance;
 
 	public Automobile(){}
 	
-	public Automobile(int automobileId, int amount, String description, Date automobileDate, User user, double balance) {
+	public Automobile(int automobileId, int amount, String description, Date automobileDate, User user) {
 		super();
 		this.automobileId = automobileId;
 		this.amount = amount;
 		this.description = description;
 		this.automobileDate = automobileDate;
 		this.user = user;
-		this.balance = balance;
 	}
 
 	public int getAutomobileId() {
@@ -101,18 +96,10 @@ public class Automobile {
 		this.user = user;
 	}
 
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
 	@Override
 	public String toString() {
 		return "Automobile [automobileId=" + automobileId + ", amount=" + amount + ", description=" + description
-				+ ", automobileDate=" + automobileDate + ", user=" + user + ", balance=" + balance + "]";
+				+ ", automobileDate=" + automobileDate + ", user=" + user + "]";
 	}
 
 }

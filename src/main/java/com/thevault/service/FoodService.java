@@ -25,13 +25,17 @@ public class FoodService {
 	public Food createFood(Food food){
 		System.out.println("in createFood service");
 		System.out.println("creating food: " + food);
-		Bank bank = new Bank(0, food.getBalance(), food.getFoodDate(), food.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(food.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - food.getAmount(), food.getFoodDate(), food.getUser());
 		bankDao.createBank(bank);
 		return foodDao.createFood(food);
 	}
 	public boolean deleteFood(Food food){
 		System.out.println("in deleteFood service");
 		System.out.println("deleting food: \n" + food);
+		Bank recentBank = bankDao.getMostRecentEntry(food.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + food.getAmount(), food.getFoodDate(), food.getUser());
+		bankDao.createBank(bank);
 		return foodDao.deleteFood(food);
 	}
 	public Food getFoodById(int id){

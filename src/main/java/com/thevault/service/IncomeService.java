@@ -25,7 +25,8 @@ public class IncomeService {
 	public Income createIncome(Income income){
 		System.out.println("in createIncome service");
 		System.out.println("creating income: " + income);
-		Bank bank = new Bank(0, income.getBalance(), income.getIncomeDate(), income.getUser());
+		Bank recentBank = bankDao.getMostRecentEntry(income.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() + income.getAmount(), income.getIncomeDate(), income.getUser());
 		bankDao.createBank(bank);
 		return incomeDao.createIncome(income);
 	}
@@ -33,6 +34,9 @@ public class IncomeService {
 	public boolean deleteIncome(Income income){
 		System.out.println("In deleteIncome service");
 		System.out.println("deleting income: \n" + income);
+		Bank recentBank = bankDao.getMostRecentEntry(income.getUser());
+		Bank bank = new Bank(0, recentBank.getBalance() - income.getAmount(), income.getIncomeDate(), income.getUser());
+		bankDao.createBank(bank);
 		return incomeDao.deleteIncome(income);
 	}
 	public Income getIncomeById(int id){
