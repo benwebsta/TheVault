@@ -32,7 +32,7 @@
   grid-column: 3;
   grid-row: 3 / 5;
 }
-.title {
+.title, th, td{
 	text-align: center;
 }
 .title h1{
@@ -54,3 +54,8 @@ table, th, td {
 .delete-row-entry{
 	cursor: pointer;
 }
+.center{
+	text-align:center; 
+	margin:0 auto;
+}
+

@@ -9,20 +9,8 @@
 			<h1>Summary Page</h1>
 			<div ng-show="summaryEntries.length == 0">
 				No Entries for selected month
-			</div>
-		</div>
-		<div class="three" ng-show="summaryEntries.length != 0">
-			<div class="chartDiv">
-				<canvas id="pie" class="chart chart-pie myChart" chart-data="summaryData" chart-labels="summaryLabels" chart-options="options"></canvas> 
-			</div>
-		</div>
-		<div class="four" ng-show="summaryEntries.length != 0">
-			<div class="chartDiv" ng-show="summaryEntries.length != 0">
-				<canvas id="bar" class="chart chart-bar myChart" chart-data="summaryData2" chart-labels="summaryLabels2" chart-series="summarySeries"></canvas>
-			</div>
-		</div>
-		<div class="five">
-			<div class="dropdown">
+			</div><br>
+			<div class="dropdown center">
 				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
@@ -41,8 +29,11 @@
 					<li ng-click="december()"><a>December</a></li>   
 				</ul>
 			</div><br>
-			<table ng-cloak ng-show="showSummaryTable == true">
-				<tr>
+			<div ng-show="showSummaryTable == true" class="center">
+				<button ng-click="delete = !delete;" class="btn btn-default" type="button">Remove Items Toggle</button>
+			</div><br>
+			<table ng-cloak ng-show="showSummaryTable == true" class="center">
+				<tr> 
 					<th>Amount</th>
 					<th>Group</th>
 					<th>Description</th>
@@ -61,10 +52,19 @@
 				</tr>
 			</table>
 		</div>
-		<div class="six" ng-show="summaryEntries.length != 0">
-			<div ng-show="showSummaryTable == true">
-				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
+		<div class="three" ng-show="summaryEntries.length != 0">
+			<div class="chartDiv" ng-show="summaryEntries.length != 0">
+				<canvas id="bar" class="chart chart-bar myChart" chart-data="summaryData2" chart-labels="summaryLabels2" chart-series="summarySeries"></canvas>
 			</div>
+		</div>
+		<div class="four" ng-show="summaryEntries.length != 0">
+			
+		</div>
+		<div class="five" ng-show="summaryEntries.length != 0">
+			
+		</div>
+		<div class="six" ng-show="summaryEntries.length != 0">
+			
 		</div>
 	</div>
 </body>
