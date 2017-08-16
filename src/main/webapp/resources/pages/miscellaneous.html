@@ -1,23 +1,28 @@
 <body>
 	<div class="wrapper">
-		<div class="one">
+		<div class="one" ng-show="miscellaneousEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="miscellaneousData" chart-labels="miscellaneousLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="two title"><h1>Miscellaneous Page</h1></div>
-		<div class="three">
+		<div class="two title">
+			<h1>Miscellaneous Page</h1>
+			<div ng-show="miscellaneousEntries.length == 0">
+				No Entries for selected month
+			</div>
+		</div>
+		<div class="three" ng-show="miscellaneousEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="miscellaneousData" chart-labels="miscellaneousLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="four">
+		<div class="four" ng-show="miscellaneousEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="bar" class="chart chart-bar myChart" chart-data="miscellaneousData2" chart-labels="miscellaneousLabels2" chart-series="miscellaneousSeries"></canvas>
 			</div>
 		</div>
 		<div class="five">
-			<div class="dropdown" ng-cloak ng-show="showMiscellaneousTable == true">
+			<div class="dropdown">
 				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
@@ -53,7 +58,7 @@
 				</tr>
 			</table>
 		</div>
-		<div class="six">
+		<div class="six" ng-show="miscellaneousEntries.length != 0">
 			<div ng-show="showMiscellaneousTable == true">
 				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
 			</div>

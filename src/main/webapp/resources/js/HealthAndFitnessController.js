@@ -128,6 +128,8 @@ app.controller("HealthAndFitnessController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showHealthAndFitnessTable = false;
 			$rootScope.healthAndFitnessLabels = new Array();
 			$rootScope.healthAndFitnessData = new Array();
 			$rootScope.healthAndFitnessLabels2 = new Array();

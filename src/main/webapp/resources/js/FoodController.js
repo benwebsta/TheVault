@@ -128,6 +128,8 @@ app.controller("FoodController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showFoodTable = false;
 			$rootScope.foodLabels = new Array();
 			$rootScope.foodData = new Array();
 			$rootScope.foodLabels2 = new Array();

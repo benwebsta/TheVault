@@ -128,6 +128,8 @@ app.controller("RentAndUtilitiesController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showRentAndUtilitiesTable = false;
 			$rootScope.rentAndUtilitiesLabels = new Array();
 			$rootScope.rentAndUtilitiesData = new Array();
 			$rootScope.rentAndUtilitiesLabels2 = new Array();

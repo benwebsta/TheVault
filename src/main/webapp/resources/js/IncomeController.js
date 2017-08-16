@@ -128,6 +128,8 @@ app.controller("IncomeController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showIncomeTable = false;
 			$rootScope.incomeLabels = new Array();
 			$rootScope.incomeData = new Array();
 			$rootScope.incomeLabels2 = new Array();

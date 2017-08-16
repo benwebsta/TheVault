@@ -1,23 +1,28 @@
 <body>
 	<div class="wrapper">
-		<div class="one">
+		<div class="one" ng-show="entertainmentEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="entertainmentData" chart-labels="entertainmentLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="two title"><h1>Entertainment Page</h1></div>
-		<div class="three">
+		<div class="two title">
+			<h1>Entertainment Page</h1>
+			<div ng-show="entertainmentEntries.length == 0">
+				No Entries for selected month
+			</div>
+		</div>
+		<div class="three" ng-show="entertainmentEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="entertainmentData" chart-labels="entertainmentLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="four">
+		<div class="four" ng-show="entertainmentEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="bar" class="chart chart-bar myChart" chart-data="entertainmentData2" chart-labels="entertainmentLabels2" chart-series="entertainmentSeries"></canvas>
 			</div>
 		</div>
 		<div class="five">
-			<div class="dropdown" ng-cloak ng-show="showEntertainmentTable == true">
+			<div class="dropdown">
 				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
@@ -53,7 +58,7 @@
 				</tr>
 			</table>
 		</div>
-		<div class="six">
+		<div class="six" ng-show="entertainmentEntries.length != 0">
 			<div ng-show="showEntertainmentTable == true">
 				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
 			</div>

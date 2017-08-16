@@ -128,6 +128,8 @@ app.controller("MiscellaneousController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showMiscellaneousTable = false;
 			$rootScope.miscellaneousLabels = new Array();
 			$rootScope.miscellaneousData = new Array();
 			$rootScope.miscellaneousLabels2 = new Array();

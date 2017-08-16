@@ -128,6 +128,8 @@ app.controller("EntertainmentController",
 			return 0;
 		}
 		var display = function(responseArray){
+			if(responseArray.length == 0)
+				$rootScope.showEntertainmentTable = false;
 			$rootScope.entertainmentLabels = new Array();
 			$rootScope.entertainmentData = new Array();
 			$rootScope.entertainmentLabels2 = new Array();

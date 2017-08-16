@@ -212,6 +212,9 @@ app.controller("SummaryController",
 		}
 		
 		var display = function(summaryArray){
+			if(summaryArray.length == 0)
+				$rootScope.showSummaryTable = false;
+			
 			console.log("in display");
 			console.log(summaryArray);
     		$rootScope.summaryLabels = new Array();
@@ -280,8 +283,8 @@ app.controller("SummaryController",
 			$rootScope.summaryData2.push($rootScope.healthAndFitnessTotal);
 			/*$rootScope.summaryLabels.push("income");
 			$rootScope.summaryData.push($rootScope.incomeTotal);
-			$rootScope.summaryLabels2.push("income");*/
-			$rootScope.summaryData2.push($rootScope.incomeTotal);
+			$rootScope.summaryLabels2.push("income");
+			$rootScope.summaryData2.push($rootScope.incomeTotal);*/
 			$rootScope.summaryLabels.push("miscellaneous");
 			$rootScope.summaryData.push($rootScope.miscellaneousTotal);
 			$rootScope.summaryLabels2.push("miscellaneous");

@@ -1,23 +1,28 @@
 <body>
 	<div class="wrapper">
-		<div class="one">
+		<div class="one" ng-show="automobileEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="two title"><h1>Automobile Page</h1></div>
-		<div class="three">
+		<div class="two title">
+			<h1>Automobile Page</h1>
+			<div ng-show="automobileEntries.length == 0">
+				No Entries for selected month
+			</div>
+		</div>
+		<div class="three" ng-show="automobileEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
 			</div>
 		</div>
-		<div class="four">
+		<div class="four" ng-show="automobileEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="bar" class="chart chart-bar myChart" chart-data="automobileData2" chart-labels="automobileLabels2" chart-series="automobileSeries"></canvas>
 			</div>
 		</div>
 		<div class="five">
-			<div class="dropdown" ng-cloak ng-show="showAutomobileTable == true">
+			<div class="dropdown">
 				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedMonth}}
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
@@ -53,7 +58,7 @@
 				</tr>
 			</table>
 		</div>
-		<div class="six">
+		<div class="six" ng-show="automobileEntries.length != 0">
 			<div ng-show="showAutomobileTable == true">
 				<button ng-click="delete = !delete;" class="btn btn-primary" type="button">Remove Items Toggle</button>
 			</div>

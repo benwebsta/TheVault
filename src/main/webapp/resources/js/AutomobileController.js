@@ -127,7 +127,9 @@ app.controller("AutomobileController",
 			if (new Date(date1.automobileDate).getTime() <= new Date(date2.automobileDate).getTime()) return 1;
 			return 0;
 		}
-		var display = function(responseArray){	    
+		var display = function(responseArray){	  
+			if(responseArray.length == 0)
+				$rootScope.showAutomobileTable = false;  
 			$rootScope.automobileLabels = new Array();
 			$rootScope.automobileData = new Array();
 			$rootScope.automobileLabels2 = new Array();
