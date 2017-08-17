@@ -31,7 +31,7 @@ app.controller("RegistrationController",
 							    	  method: 'POST',
 							    	  url: 'createNewUser',
 							    	  data: userCreate
-							    	}).then(function successCallback(response) {							    		
+							    	}).then(function successCallback(response) {	
 							    		var oneMonth = new Date();
 										console.log("today: " + oneMonth);
 										oneMonth.setDate(oneMonth.getDate() + 30);
@@ -66,8 +66,22 @@ app.controller("RegistrationController",
 										    	  data: bank
 										    	}).then(function successCallback(response) {
 										    		console.log("bank created: \n" + response.data);
-										    				
+										    		$http({
+												    	  method: 'POST',
+												    	  url: 'getAllBanks',
+												    	  data: $rootScope.user
+												    	}).then(function successCallback(response) {
+												    		$rootScope.banks = response.data;
+												    		$rootScope.balance = $rootScope.banks.sort(function(a,b) { 
+												    		    return new Date(b.bankDate).getTime() - new Date(a.bankDate).getTime() 
+												    		})[0].balance;
+												    	  }, function errorCallback(response) {
+												    		  console.log("error");
+												    	  });
+										    		
 													$state.go("summary");
+										    		$timeout(getFin, 1000);
+										    		
 										    	  }, function errorCallback(response) {
 										    		  console.log("error");
 										    	  });
@@ -87,5 +101,8 @@ app.controller("RegistrationController",
 			    var removeUsernameTaken = function(){
 			    	$scope.usernameTaken = false;
 			    }
+			    var getFin = function(){
+		    		$rootScope.getAllFinances();
+				}
 		  
 	}]);

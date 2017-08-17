@@ -6,6 +6,21 @@ app.controller("SummaryController",
 		console.log("all selected false");
 		
 		$rootScope.getAllFinances = function(){
+			$http({
+		    	  method: 'POST',
+		    	  url: 'getAllBanks',
+		    	  data: $rootScope.user
+		    	}).then(function successCallback(response) {
+		    		$rootScope.banks = response.data;
+		    		$rootScope.balance = $rootScope.banks.sort(function(a,b) { 
+		    		    return new Date(b.bankDate).getTime() - new Date(a.bankDate).getTime() 
+		    		})[0].balance;
+		    		console.log("in get all banks" + $rootScope.balance);
+		    		console.log("user: " + $rootScope.user);
+		    	  }, function errorCallback(response) {
+		    		  console.log("error");
+		    	  });
+			
 			console.log("in get all finances");
 			
 			$http({

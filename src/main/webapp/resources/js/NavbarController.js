@@ -17,7 +17,7 @@ app.controller("NavbarController",
 			    	  data: userGet
 			    	}).then(function successCallback(response) {
 			    		$rootScope.user = response.data;
-			    		
+			    		console.log("user: " + $rootScope.user);
 			    		$http({
 					    	  method: 'POST',
 					    	  url: 'getAllBanks',
