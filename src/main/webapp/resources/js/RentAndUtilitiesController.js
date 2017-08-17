@@ -137,7 +137,9 @@ app.controller("RentAndUtilitiesController",
 			$rootScope.rentAndUtilitiesSeries = ['RentAndUtilities'];
 			$rootScope.options = {legend: {display: true}};
 			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
 				
 				$rootScope.rentAndUtilitiesLabels.push(responseArray[i].description);
 				$rootScope.rentAndUtilitiesData.push(responseArray[i].amount);
@@ -145,6 +147,9 @@ app.controller("RentAndUtilitiesController",
 				$rootScope.rentAndUtilitiesLabels2.push(responseArray[i].rentAndUtilityDate);
 				$rootScope.rentAndUtilitiesData2.push(responseArray[i].amount);
 			}
+
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();

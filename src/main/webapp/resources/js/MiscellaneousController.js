@@ -137,7 +137,9 @@ app.controller("MiscellaneousController",
 			$rootScope.miscellaneousSeries = ['Miscellaneous'];
 			$rootScope.options = {legend: {display: true}};
 			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
 				
 				$rootScope.miscellaneousLabels.push(responseArray[i].description);
 				$rootScope.miscellaneousData.push(responseArray[i].amount);
@@ -145,6 +147,9 @@ app.controller("MiscellaneousController",
 				$rootScope.miscellaneousLabels2.push(responseArray[i].miscellaneousDate);
 				$rootScope.miscellaneousData2.push(responseArray[i].amount);
 			}
+
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();

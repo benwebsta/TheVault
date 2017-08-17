@@ -137,13 +137,19 @@ app.controller("IncomeController",
 			$rootScope.incomeSeries = ['Income'];
 			$rootScope.options = {legend: {display: true}};
 			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
+				
 				$rootScope.incomeLabels.push(responseArray[i].description);
 				$rootScope.incomeData.push(responseArray[i].amount);
 
 				$rootScope.incomeLabels2.push(responseArray[i].incomeDate);
 				$rootScope.incomeData2.push(responseArray[i].amount);
 			}
+
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();

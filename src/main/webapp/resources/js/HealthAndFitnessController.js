@@ -137,7 +137,9 @@ app.controller("HealthAndFitnessController",
 			$rootScope.healthAndFitnessSeries = ['HealthAndFitness'];
 			$rootScope.options = {legend: {display: true}};
 			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
 				
 				$rootScope.healthAndFitnessLabels.push(responseArray[i].description);
 				$rootScope.healthAndFitnessData.push(responseArray[i].amount);
@@ -145,6 +147,9 @@ app.controller("HealthAndFitnessController",
 				$rootScope.healthAndFitnessLabels2.push(responseArray[i].healthAndFitnessDate);
 				$rootScope.healthAndFitnessData2.push(responseArray[i].amount);
 			}
+
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();

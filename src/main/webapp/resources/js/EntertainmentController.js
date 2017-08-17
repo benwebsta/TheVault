@@ -135,9 +135,11 @@ app.controller("EntertainmentController",
 			$rootScope.entertainmentLabels2 = new Array();
 			$rootScope.entertainmentData2 = new Array();
 			$rootScope.entertainmentSeries = ['Entertainment'];
-			
 			$rootScope.options = {legend: {display: true}};
+			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
 				
 				$rootScope.entertainmentLabels.push(responseArray[i].description);
 				$rootScope.entertainmentData.push(responseArray[i].amount);
@@ -145,6 +147,9 @@ app.controller("EntertainmentController",
 				$rootScope.entertainmentLabels2.push(responseArray[i].entertainmentDate);
 				$rootScope.entertainmentData2.push(responseArray[i].amount);
 			}
+			
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		
 		function monthFilter(array, test){

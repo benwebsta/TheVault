@@ -3,7 +3,9 @@
 		<div class="one" ng-show="automobileEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="automobileData" chart-labels="automobileLabels" chart-options="options"></canvas> 
-			</div>
+			</div><br>
+			<h2 class="center"><u><b>{{selectedMonth}}</b></u></h2><br>
+			<h4 ng-cloak ng-show="showAutomobileTable == true" class="center">Spent: <b style="color:red;">${{netTotal}}</b></h4>
 		</div>
 		<div class="two title">
 			<h1>Automobile Page</h1>

@@ -137,13 +137,18 @@ app.controller("AutomobileController",
 			$rootScope.automobileSeries = ['Automobile'];
 			$rootScope.options = {legend: {display: true}};
 			
+			var total = 0;
 			for(i = 0; i < responseArray.length; i++){
+				total += responseArray[i].amount;
 				$rootScope.automobileLabels.push(responseArray[i].description);
 				$rootScope.automobileData.push(responseArray[i].amount);
 
 				$rootScope.automobileLabels2.push(responseArray[i].automobileDate);
 				$rootScope.automobileData2.push(responseArray[i].amount);
 			}
+			
+			$rootScope.netTotal = total;
+			console.log("total spent: " + $rootScope.netTotal);
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();

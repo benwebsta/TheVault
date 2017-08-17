@@ -257,7 +257,7 @@ app.controller("SummaryController",
     				console.log("5");
     				$rootScope.miscellaneousTotal += summaryArray[x].amount;
     			}
-    			else if(summaryArray[x].group == "RentAndUtilities"){
+    			else if(summaryArray[x].group == "RentAndUtility"){
     				console.log("6");
     				$rootScope.rentAndUtilityTotal += summaryArray[x].amount;
     			}
