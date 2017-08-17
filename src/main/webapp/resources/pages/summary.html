@@ -3,7 +3,14 @@
 		<div class="one" ng-show="summaryEntries.length != 0">
 			<div class="chartDiv">
 				<canvas id="pie" class="chart chart-pie myChart" chart-data="summaryData" chart-labels="summaryLabels" chart-options="options"></canvas> 
-			</div>
+			</div><br>
+			<h2 class="center"><u><b>{{selectedMonth}}</b></u></h2><br>
+			<h4 ng-cloak ng-show="showSummaryTable == true" class="center">Income: <b style="color:green;">${{incomeTotal}}</b></h4><br>
+			<h4 ng-cloak ng-show="showSummaryTable == true" class="center" >Spent: <b style="color:red;">${{totalSpent}}</b></h4><br>
+			<h4 ng-cloak ng-show="showSummaryTable == true" class="center">Net total: 
+				<b ng-if="netTotal >= 0" style="color:green;">${{netTotal}}</b>
+				<b ng-if="netTotal < 0" style="color:red;">${{netTotal}}</b>
+			</h4>
 		</div>
 		<div class="two title">
 			<h1>Summary Page</h1>

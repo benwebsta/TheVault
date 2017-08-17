@@ -264,7 +264,6 @@ app.controller("SummaryController",
     			
     		}
 			
-			
 			$rootScope.summaryLabels.push("automobile");
 			$rootScope.summaryData.push($rootScope.automobileTotal);
 			$rootScope.summaryLabels2.push("automobile");
@@ -293,6 +292,15 @@ app.controller("SummaryController",
 			$rootScope.summaryData.push($rootScope.rentAndUtilityTotal);
 			$rootScope.summaryLabels2.push("rentAndUtility");
 			$rootScope.summaryData2.push($rootScope.rentAndUtilityTotal);
+			$rootScope.totalSpent = $rootScope.automobileTotal + $rootScope.entertainmentTotal + $rootScope.foodTotal + $rootScope.healthAndFitnessTotal +
+									$rootScope.miscellaneousTotal + $rootScope.rentAndUtilityTotal;
+			console.log("income total: " + $rootScope.incomeTotal);
+			console.log("total spent: " + $rootScope.totalSpent);
+			$scope.Math = window.Math;
+			
+			$rootScope.net = $rootScope.incomeTotal - $rootScope.totalSpent;
+			$rootScope.netTotal = Math.round($rootScope.net * 100) / 100;
+			console.log("net: " + $rootScope.netTotal);	
 		}
 		function monthFilter(array, test){
 			var newArray = new Array();
