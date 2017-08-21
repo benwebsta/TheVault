@@ -73,9 +73,9 @@ public class BankDaoImpl implements BankDao{
 		     tx = sess.beginTransaction();
 		     System.out.println(" in tx");
 		     Criteria c = sess.createCriteria(Bank.class);
+		     System.out.println(c);
 			 c.addOrder(Order.desc("bankId"));
 			 c.add(Restrictions.eq("user", user));
-			 System.out.println(c.list().get(0));
 			 System.out.println("end of tx");
 		     tx.commit();
 		     return (Bank) c.list().get(0);

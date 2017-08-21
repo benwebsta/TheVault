@@ -24,7 +24,7 @@ public class BankRestController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/getAllBanks")
 	public @ResponseBody List<Bank> getAllBanks_JSON(@RequestBody String userJSON){
-		System.out.println("POST get automobiles rest controller hit");
+		System.out.println("POST get banks rest controller hit");
 		System.out.println("JSON: " + userJSON);
 		
 		Gson gson = new Gson();
@@ -48,6 +48,19 @@ public class BankRestController {
 		
 		System.out.println("NEW BANK: " + newBank);
 		Bank bank = bankService.createBank(newBank);
+		System.out.println(bank);
+		return bank;
+	}
+	@RequestMapping(method=RequestMethod.POST, value="/getMostRecent")
+	public @ResponseBody Bank getMostRecent(@RequestBody String userJSON){
+		System.out.println("GET get bank rest controller hit");
+		System.out.println("JSON: " + userJSON);
+		
+		Gson gson = new Gson();
+		User user = gson.fromJson(userJSON, User.class);		
+		
+		System.out.println("user: " + user);
+		Bank bank = bankService.getMostRecentEntry(user);
 		System.out.println(bank);
 		return bank;
 	}

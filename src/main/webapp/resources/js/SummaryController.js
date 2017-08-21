@@ -8,13 +8,10 @@ app.controller("SummaryController",
 		$rootScope.getAllFinances = function(){
 			$http({
 		    	  method: 'POST',
-		    	  url: 'getAllBanks',
+		    	  url: 'getMostRecent',
 		    	  data: $rootScope.user
 		    	}).then(function successCallback(response) {
-		    		$rootScope.banks = response.data;
-		    		$rootScope.balance = $rootScope.banks.sort(function(a,b) { 
-		    		    return new Date(b.bankDate).getTime() - new Date(a.bankDate).getTime() 
-		    		})[0].balance;
+		    		$rootScope.balance = response.data.balance;
 		    		console.log("in get all banks" + $rootScope.balance);
 		    		console.log("user: " + $rootScope.user);
 		    	  }, function errorCallback(response) {

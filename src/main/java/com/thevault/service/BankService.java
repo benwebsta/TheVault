@@ -26,7 +26,8 @@ public class BankService {
 	public Bank getMostRecentEntry(User user){
 		System.out.println("in getMostRecentEntry service");
 		System.out.println("for bank entries");
-		Bank test = bankDao.getMostRecentEntry(user);
-		return test;
+		Bank bank = bankDao.getMostRecentEntry(user);
+		System.out.println("most recent bank: " + bank);
+		return bank;
 	}
 }
