@@ -81,14 +81,45 @@ app.controller("IncomeController",
 	    	  });
 			
 		}
+		//DD month YY
+		/*$scope.formatDate = function(date) {
+			  var monthNames = [
+			    "January", "February", "March",
+			    "April", "May", "June", "July",
+			    "August", "September", "October",
+			    "November", "December"
+			  ];
+
+			  var day = date.getDate();
+			  var monthIndex = date.getMonth();
+			  var year = date.getFullYear();
+			  year = year.toString().substr(-2);
+
+			  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+			}*/
 		
+		$scope.formatDate = function(date){
+		    var d = new Date(date),
+		        month = '' + (d.getMonth() + 1),
+		        day = '' + d.getDate(),
+		        year = d.getFullYear();
+
+		    if (month.length < 2) month = '0' + month;
+		    if (day.length < 2) day = '0' + day;
+
+		    return [year, month, day].join('-');
+		}
 		
 		$scope.incomeEntrySubmit = function(){
 			var newBalance = $rootScope.balance + $scope.amount;
+			console.log($scope.inputDate);
+			var sqlDate = $scope.formatDate($scope.inputDate);
+			console.log(sqlDate);
 			var income = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user,
+					date: sqlDate	
 			}
 			$rootScope.balance = newBalance;
 			console.log("income controller entry click");

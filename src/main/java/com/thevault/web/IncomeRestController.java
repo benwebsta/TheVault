@@ -1,5 +1,6 @@
 package com.thevault.web;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.thevault.beans.Income;
 import com.thevault.beans.User;
 import com.thevault.service.IncomeService;
@@ -28,9 +31,18 @@ public class IncomeRestController {
 		
 		Gson gson = new Gson();
 		Income newIncome = gson.fromJson(newIncomeJSON, Income.class);
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-		newIncome.setIncomeDate(date);
 		
+		JsonParser parser = new JsonParser();
+		JsonObject obj = parser.parse(newIncomeJSON).getAsJsonObject();
+		String valueFromClient = obj.get("date").getAsString();
+		java.sql.Date date = java.sql.Date.valueOf(valueFromClient);
+		//String formatted = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		//java.sql.Date formattedDate = new java.sql.Date(formatted);
+		System.out.println(date);
+		
+		/*System.out.println("Test income: --------" + newIncome.toString());
+		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());*/
+		newIncome.setIncomeDate(date);
 		
 		System.out.println("NEW INCOME: " + newIncome);
 		Income income = incomeService.createIncome(newIncome);
