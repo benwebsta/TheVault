@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.thevault.beans.Food;
 import com.thevault.beans.RentAndUtility;
 import com.thevault.beans.User;
@@ -29,7 +31,10 @@ public class FoodRestController {
 		
 		Gson gson = new Gson();
 		Food newFood = gson.fromJson(newFoodJSON, Food.class);
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		JsonParser parser = new JsonParser();
+		JsonObject obj = parser.parse(newFoodJSON).getAsJsonObject();
+		String valueFromClient = obj.get("date").getAsString();
+		java.sql.Date date = java.sql.Date.valueOf(valueFromClient);
 		newFood.setFoodDate(date);
 		
 		

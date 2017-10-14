@@ -31,17 +31,10 @@ public class IncomeRestController {
 		
 		Gson gson = new Gson();
 		Income newIncome = gson.fromJson(newIncomeJSON, Income.class);
-		
 		JsonParser parser = new JsonParser();
 		JsonObject obj = parser.parse(newIncomeJSON).getAsJsonObject();
 		String valueFromClient = obj.get("date").getAsString();
 		java.sql.Date date = java.sql.Date.valueOf(valueFromClient);
-		//String formatted = new SimpleDateFormat("yyyy-MM-dd").format(date);
-		//java.sql.Date formattedDate = new java.sql.Date(formatted);
-		System.out.println(date);
-		
-		/*System.out.println("Test income: --------" + newIncome.toString());
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());*/
 		newIncome.setIncomeDate(date);
 		
 		System.out.println("NEW INCOME: " + newIncome);

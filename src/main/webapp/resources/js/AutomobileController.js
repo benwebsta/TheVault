@@ -81,14 +81,27 @@ app.controller("AutomobileController",
 	    	  });
 			
 		}
-		
+
+		$scope.formatDate = function(date){
+		    var d = new Date(date),
+		        month = '' + (d.getMonth() + 1),
+		        day = '' + d.getDate(),
+		        year = d.getFullYear();
+
+		    if (month.length < 2) month = '0' + month;
+		    if (day.length < 2) day = '0' + day;
+
+		    return [year, month, day].join('-');
+		}
 		
 		$scope.automobileEntrySubmit = function(){
 			var newBalance = $rootScope.balance - $scope.amount;
+			var sqlDate = $scope.formatDate($scope.inputDate);
 			var automobile = {
 					amount: $scope.amount,
 					description: $scope.description,
-					user: $scope.user
+					user: $scope.user,
+					date: sqlDate
 			}
 			$rootScope.balance = newBalance;
 			console.log("automobile controller entry click");

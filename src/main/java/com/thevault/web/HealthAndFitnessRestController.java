@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.thevault.beans.HealthAndFitness;
 import com.thevault.beans.Miscellaneous;
 import com.thevault.beans.User;
@@ -29,7 +31,10 @@ public class HealthAndFitnessRestController {
 		
 		Gson gson = new Gson();
 		HealthAndFitness newHealthAndFitness = gson.fromJson(newHealthAndFitnessJSON, HealthAndFitness.class);
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		JsonParser parser = new JsonParser();
+		JsonObject obj = parser.parse(newHealthAndFitnessJSON).getAsJsonObject();
+		String valueFromClient = obj.get("date").getAsString();
+		java.sql.Date date = java.sql.Date.valueOf(valueFromClient);
 		newHealthAndFitness.setHealthAndFitnessDate(date);
 		
 		
